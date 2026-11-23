@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Daily Chai</title>
 <meta name="description" content="A daily five-minute digest of B2B tech news with product marketing takeaways.">
-<meta name="theme-color" content="#121111">
+<meta name="theme-color" content="#1F1510">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,16 +18,16 @@
 <style>
 /* Layout: one narrow reading column with a tab bar: Today, Past cups, Saved. */
 :root {
-  /* Palette: espresso neutrals with one golden chai accent. Always dark. */
-  --bg: #121111;          /* espresso */
-  --surface: #1C1B1B;     /* cards */
-  --ink: #F5F3F0;         /* steamed milk */
-  --muted: #A3A09C;       /* neutral grey */
-  --line: #2D2B2A;
-  --matcha: #EDB458;      /* golden chai: the one accent */
-  --matcha-soft: #2A251C; /* faint gold tint for selected states */
-  --sage: #1C1B1B;        /* quote card */
-  --chai: #EDB458;
+  /* Palette: two colors only. Dark brown and white. Always dark. */
+  --bg: #1F1510;          /* dark brown */
+  --surface: #2A1E18;     /* cards: a step lighter */
+  --ink: #FFFFFF;         /* white */
+  --muted: #BDB2AB;       /* white, softened */
+  --line: #3B2C24;
+  --matcha: #FFFFFF;      /* accent is white too */
+  --matcha-soft: #FFFFFF; /* selected states: solid white */
+  --sage: #2A1E18;        /* quote card */
+  --chai: #FFFFFF;
   color-scheme: dark;
   --title: "League Spartan", "Futura", "Avenir Next", system-ui, sans-serif;
   --display: "DM Sans", system-ui, -apple-system, sans-serif;
@@ -86,7 +86,7 @@ html, body { overscroll-behavior-y: contain; }
 .pull svg { width: 18px; height: 18px; }
 .pull.ready { color: var(--matcha); border-color: var(--matcha); }
 .pour { position: fixed; inset: 0; z-index: 40; background: var(--bg); overflow: hidden; display: grid; place-items: center; }
-.pour .tea { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: linear-gradient(to top, #C98A2E, var(--matcha)); }
+.pour .tea { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: linear-gradient(to top, #EDE6E1, #FFFFFF); }
 .pour.fill .tea { animation: fillup 1.5s cubic-bezier(.45,.05,.35,1) forwards; }
 .pour .wave { position: absolute; left: 0; bottom: calc(100% - 1px); width: 200%; height: 28px; fill: var(--matcha); animation: slosh 1.2s linear infinite; }
 .pourText { position: relative; font-family: var(--title); font-weight: 800; text-transform: uppercase; letter-spacing: .06em; font-size: 22px; color: var(--ink); text-align: center; padding: 0 24px;; font-size: 16px; background: var(--bg); padding: 12px 20px; border-radius: 99px; }
@@ -98,7 +98,7 @@ html, body { overscroll-behavior-y: contain; }
 #tea { display: flex; flex-direction: column; gap: 14px; }
 .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
 .tabs a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 99px; border: 1px solid var(--line); }
-.tabs a[aria-current="page"] { color: var(--matcha); background: var(--matcha-soft); border-color: var(--matcha-soft); }
+.tabs a[aria-current="page"] { color: var(--bg); background: var(--ink); border-color: var(--ink); }
 .section { display: flex; flex-direction: column; gap: 14px; }
 .story .actions { display: flex; gap: 16px; align-items: center; }
 #view { display: flex; flex-direction: column; gap: 36px; }
