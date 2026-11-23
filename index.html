@@ -78,8 +78,24 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
 .tabs a[aria-current="page"] { color: var(--ink); background: var(--sage); border-color: var(--sage); }
 .section { display: flex; flex-direction: column; gap: 14px; }
 .story .actions { display: flex; gap: 16px; align-items: center; }
-.save { border: 0; padding: 4px 0; color: var(--chai); }
-.save[aria-pressed="true"] { color: var(--ink); }
+#view { display: flex; flex-direction: column; gap: 36px; }
+.head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; min-height: 32px; }
+.story { position: relative; }
+.story .meta { padding-right: 40px; }
+.save { position: absolute; top: 12px; right: 12px; width: 40px; height: 40px; border: 0; border-radius: 99px; padding: 0; display: grid; place-items: center; color: var(--muted); }
+.save:hover { color: var(--chai); }
+.save[aria-pressed="true"] { color: var(--chai); }
+.save svg { width: 20px; height: 20px; }
+.save[aria-pressed="true"] path { fill: currentColor; }
+.refill { border-color: var(--matcha); color: var(--matcha); }
+.confirm { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; }
+.confirm p { margin: 0; font-size: 15px; }
+.confirm .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.primary { background: var(--matcha); border-color: var(--matcha); color: var(--bg); }
+.primary:hover { color: var(--bg); opacity: .9; }
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 20px); opacity: 0; background: var(--ink); color: var(--bg); font-size: 14px; font-weight: 600; padding: 10px 16px; border-radius: 99px; transition: opacity .25s, transform .25s; pointer-events: none; max-width: calc(100% - 32px); text-align: center; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
 .list { display: flex; flex-direction: column; gap: 10px; }
 .day { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: var(--surface); border-radius: 14px; padding: 16px 18px; text-decoration: none; color: var(--ink); }
 .day span { color: var(--muted); font-size: 14px; min-width: 0; }
@@ -127,22 +143,37 @@ async function edition(day) { return cache[day] ||= await getJSON("editions/" + 
 // Per-edition state: which 4 stories are poured, and the next one in the pot.
 const pour = {};
 function stateFor(ed) { return pour[ed.date] ||= { shown: [0, 1, 2, 3].filter(i => i < ed.stories.length), next: 4 }; }
+// Take the next story from the pot that isn't already on screen, looping back to the start when the pot runs dry.
+function nextStory(ed) {
+  const st = stateFor(ed);
+  for (let k = 0; k < ed.stories.length; k++) {
+    const i = st.next % ed.stories.length; st.next++;
+    if (!st.shown.includes(i)) return i;
+  }
+  return st.shown[0];
+}
+let toastTimer;
+function toast(msg) {
+  let t = document.querySelector(".toast");
+  if (!t) { t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status"); document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add("show");
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 2200);
+}
+function redrawStories() { const st = stateFor(current); $("stories").innerHTML = st.shown.map((i, n) => storyCard(current, i, n)).join(""); }
 
 function storyCard(ed, i, slot, opts = {}) {
   const s = ed.stories[i];
   const id = ed.date + "#" + i;
   const isSaved = saved.some(x => x.id === id);
-  const canPour = !opts.noPour && stateFor(ed).next < ed.stories.length;
+  const canPour = !opts.noPour && ed.stories.length > 4;
   return `<article class="story" id="slot${slot}">
+    <button type="button" class="save" data-save="${esc(id)}" aria-pressed="${isSaved}" aria-label="${isSaved ? "Remove from saved" : "Save for later"}" title="${isSaved ? "Saved" : "Save for later"}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 3.5h12v17l-6-4.2-6 4.2z"/></svg></button>
     <div class="meta"><span class="kind">${esc(s.tag)}</span><span>${esc(s.date)}</span></div>
     <h3>${esc(s.headline)}</h3>
     <p>${esc(s.summary)}</p>
     <p class="pmm"><b>Takeaway</b> ${esc(s.takeaway)}</p>
     <div class="foot"><a href="${esc(s.source)}" target="_blank" rel="noopener">Source</a>
-      <div class="actions">
-        <button type="button" class="save" data-save="${esc(id)}" aria-pressed="${isSaved}">${isSaved ? "Saved" : "Save for later"}</button>
-        ${canPour ? `<button type="button" class="swap" data-slot="${slot}">Pour me another</button>` : ""}
-      </div></div>
+      ${canPour ? `<button type="button" class="swap" data-slot="${slot}">Swap this one</button>` : ""}</div>
   </article>`;
 }
 
@@ -153,13 +184,15 @@ function renderEdition(ed, isToday) {
   $("date").textContent = longDate(ed.date);
   $("view").innerHTML = `
     ${isToday ? "" : `<a class="back" href="#past">&larr; All past cups</a>`}
-    <section class="quote">
-      <span class="label">Today's sip</span>
-      <blockquote>“${esc(ed.quote.text)}”</blockquote>
-      <div class="who">${esc(ed.quote.who)}</div>
+    <section class="section">
+      <h2>${isToday ? "Today's sip" : "That day's sip"}</h2>
+      <div class="quote"><blockquote>“${esc(ed.quote.text)}”</blockquote>
+      <div class="who">${esc(ed.quote.who)}</div></div>
     </section>
     <section class="section">
-      <h2>${isToday ? "Today's tea" : "That day's tea"}</h2>
+      <div class="head"><h2>${isToday ? "Today's tea" : "That day's tea"}</h2>
+        ${ed.stories.length > 4 ? `<button type="button" class="refill" id="refill">Pour me another</button>` : ""}</div>
+      <div id="confirmBox"></div>
       <div class="stories" id="stories">${st.shown.map((i, slot) => storyCard(ed, i, slot)).join("")}</div>
     </section>
     ${ed.term ? `<section class="term"><span class="label">Term of the day</span><strong>${esc(ed.term.name)}</strong><p>${esc(ed.term.def)}</p></section>` : ""}`;
@@ -218,21 +251,37 @@ document.addEventListener("click", e => {
       if (story) saved.push({ id, i: +i, story });
     }
     storeSaved(saved); updateCount();
-    if (location.hash === "#saved") return renderSaved();
     const on = saved.some(x => x.id === id);
-    sv.setAttribute("aria-pressed", on); sv.textContent = on ? "Saved" : "Save for later";
+    toast(on ? "Saved for later" : "Removed from saved");
+    if (location.hash === "#saved") return renderSaved();
+    sv.setAttribute("aria-pressed", on); sv.setAttribute("aria-label", on ? "Remove from saved" : "Save for later"); sv.title = on ? "Saved" : "Save for later";
+    return;
+  }
+  if (e.target.closest("#refill")) {
+    $("confirmBox").innerHTML = `<div class="confirm"><p>Pour a fresh cup? All four stories will be swapped for new ones.</p>
+      <div class="btns"><button type="button" class="primary" id="doRefill">Pour it</button><button type="button" id="keep">Keep these</button></div></div>`;
+    $("doRefill").focus();
+    return;
+  }
+  if (e.target.closest("#keep")) { $("confirmBox").innerHTML = ""; return; }
+  if (e.target.closest("#doRefill")) {
+    $("confirmBox").innerHTML = "";
+    const st = stateFor(current);
+    document.querySelectorAll("#stories .story").forEach(el => el.classList.add("fade"));
+    setTimeout(() => {
+      const old = st.shown.slice(), fresh = [];
+      // Avoid both the stories on screen and the ones already picked; fall back to old ones only if the pot is tiny.
+      for (let n = 0; n < old.length; n++) { st.shown = old.concat(fresh); fresh.push(nextStory(current)); }
+      st.shown = fresh; redrawStories(); toast("Fresh cup poured ☕");
+    }, 220);
     return;
   }
   const b = e.target.closest("button[data-slot]");
   if (!b || !current) return;
   const st = stateFor(current);
-  if (st.next >= current.stories.length) return;
   const slot = +b.dataset.slot;
   $("slot" + slot).classList.add("fade");
-  setTimeout(() => {
-    st.shown[slot] = st.next++;
-    $("stories").innerHTML = st.shown.map((i, n) => storyCard(current, i, n)).join("");
-  }, 220);
+  setTimeout(() => { st.shown[slot] = nextStory(current); redrawStories(); }, 220);
 });
 
 window.addEventListener("hashchange", () => { route(); window.scrollTo(0, 0); });
