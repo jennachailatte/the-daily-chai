@@ -43,7 +43,6 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
 header { display: flex; flex-direction: column; gap: 4px; }
 .date { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
 h1 { font-family: var(--title); font-weight: 800; font-size: clamp(36px, 10vw, 54px); line-height: .95; margin: 6px 0 0; letter-spacing: .01em; text-transform: uppercase; }
-h1 span { color: var(--matcha); display: inline-block; transform: translateY(.05em) rotate(-6deg); transform-origin: 0 100%; margin-left: -.1em; }
 .tag { color: var(--muted); margin: 4px 0 0; font-size: 15px; }
 .label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; color: var(--muted); }
 .quote { background: var(--sage); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 12px; }
@@ -156,7 +155,7 @@ html, body { overscroll-behavior-y: contain; }
   <header>
     <div class="top"><div class="date" id="date"></div>
       <button type="button" class="share" id="share" aria-label="Share The Daily Chai"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M5 12v7.5h14V12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Share</button></div>
-    <h1>The Daily <span>Chai</span></h1>
+    <h1>The Daily Chai</h1>
     <p class="tag">Spilling the B2B tech tea, one cup a day.</p>
   </header>
 
@@ -417,7 +416,7 @@ document.addEventListener("click", e => {
 
 document.addEventListener("keydown", e => { if (e.key === "Escape" && $("confirmBox")) $("confirmBox").innerHTML = ""; });
 // Share and first-visit install tip.
-const SITE = "https://jennachailatte.github.io/tea-over-coffee/";
+const SITE = "https://jennachailatte.github.io/the-daily-chai/";
 $("share").addEventListener("click", async () => {
   const data = { title: "The Daily Chai", text: "A daily cup of B2B tech news with product marketing takeaways.", url: SITE };
   if (navigator.share) { try { await navigator.share(data); } catch {} return; }
