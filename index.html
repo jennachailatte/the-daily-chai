@@ -18,16 +18,16 @@
 <style>
 /* Layout: one narrow reading column with a tab bar: Today, Past cups, Saved. */
 :root {
-  /* Palette: two colors only. Dark brown and cream. Always dark. */
+  /* Palette: dark brown and cream, with dark cherry as the one accent (used as fills, so it stays readable). Always dark. */
   --bg: #1F1510;          /* dark brown */
   --surface: #2A1E18;     /* cards: a step lighter */
   --ink: #F3E8D8;         /* cream */
   --muted: #B9AC9C;       /* cream, softened */
   --line: #3B2C24;
-  --matcha: #F3E8D8;      /* accent is cream too: two colors only */
-  --matcha-soft: #3B2C24;
+  --matcha: #9E2B38;      /* dark cherry */
+  --matcha-soft: #9E2B38;
   --sage: #2A1E18;        /* quote card */
-  --chai: #F3E8D8;
+  --chai: #C2414F;        /* cherry, a touch brighter for small icons on brown */
   color-scheme: dark;
   --title: "League Spartan", "Futura", "Avenir Next", system-ui, sans-serif;
   --display: "DM Sans", system-ui, -apple-system, sans-serif;
@@ -47,7 +47,7 @@ h1 { color: var(--ink); font-family: var(--title); font-weight: 800; font-size: 
 .label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; color: var(--muted); }
 .quote { position: relative; background: var(--sage); border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 12px; }
 .quote blockquote { margin: 0; font-family: var(--display); font-weight: 500; font-size: clamp(19px, 4.4vw, 23px); line-height: 1.35; text-wrap: balance; }
-.quote .mark { color: var(--matcha); }
+.quote .mark { color: var(--chai); }
 .quote .who { color: var(--muted); font-size: 14px; }
 .row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 h2 { font-family: var(--title); font-size: 22px; letter-spacing: .04em; text-transform: uppercase; font-weight: 800; color: var(--ink); margin: 0; line-height: 1; padding-top: 4px; }
@@ -60,14 +60,14 @@ h2 { font-family: var(--title); font-size: 22px; letter-spacing: .04em; text-tra
 .meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
 .kind { color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
 .pmm { padding-top: 2px; }
-.pmm b { display: block; color: var(--matcha); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; margin-bottom: 2px; }
+.pmm b { display: block; color: var(--muted); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; margin-bottom: 2px; }
 .foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; padding-top: 4px; }
 .foot a { color: var(--muted); }
 .swap { border: 0; padding: 4px 0; color: var(--matcha); }
-a { color: var(--matcha); }
+a { color: var(--ink); }
 button { font: inherit; font-size: 13px; font-weight: 600; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 99px; padding: 6px 12px; cursor: pointer; }
-button:hover { border-color: var(--matcha); color: var(--matcha); }
-button:focus-visible { outline: 2px solid var(--matcha); outline-offset: 2px; }
+button:hover { border-color: var(--ink); color: var(--ink); }
+button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 button:disabled { opacity: .45; cursor: default; }
 .term { border-left: 2px solid var(--matcha); padding: 4px 0 4px 14px; display: flex; flex-direction: column; gap: 4px; }
 .term strong { font-family: var(--display); font-size: 17px; font-weight: 600; }
@@ -84,7 +84,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
 html, body { overscroll-behavior-y: contain; }
 .pull { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 0px); left: 50%; transform: translate(-50%, -60px); opacity: 0; z-index: 12; display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 500; padding: 8px 14px; border-radius: 99px; pointer-events: none; transition: transform .25s, opacity .25s; }
 .pull svg { width: 18px; height: 18px; }
-.pull.ready { color: var(--matcha); border-color: var(--matcha); }
+.pull.ready { color: var(--ink); border-color: var(--matcha); background: var(--matcha); }
 .pour { position: fixed; inset: 0; z-index: 40; background: var(--bg); overflow: hidden; display: grid; place-items: center; }
 .pour .tea { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: linear-gradient(to top, #E2D3BF, var(--ink)); }
 .pour.fill .tea { animation: fillup 1.5s cubic-bezier(.45,.05,.35,1) forwards; }
@@ -98,7 +98,7 @@ html, body { overscroll-behavior-y: contain; }
 #tea { display: flex; flex-direction: column; gap: 14px; }
 .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
 .tabs a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 99px; border: 1px solid var(--line); }
-.tabs a[aria-current="page"] { color: var(--bg); background: var(--ink); border-color: var(--ink); }
+.tabs a[aria-current="page"] { color: var(--ink); background: var(--matcha); border-color: var(--matcha); }
 .section { display: flex; flex-direction: column; gap: 14px; }
 .story .actions { display: flex; gap: 16px; align-items: center; }
 #view { display: flex; flex-direction: column; gap: 36px; }
@@ -110,7 +110,8 @@ html, body { overscroll-behavior-y: contain; }
 .save[aria-pressed="true"] { color: var(--chai); }
 .save svg { width: 20px; height: 20px; }
 .save[aria-pressed="true"] path { fill: currentColor; }
-.refill { border-color: var(--matcha); color: var(--matcha); }
+.refill { background: var(--matcha); border-color: var(--matcha); color: var(--ink); }
+.refill:hover { opacity: .9; }
 .overlay { position: fixed; inset: 0; z-index: 20; background: rgba(10, 4, 6, .72); display: grid; place-items: center; padding: 24px max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px)); animation: fadein .18s ease-out; }
 .confirm { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 24px 22px 20px; display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 340px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,.5); animation: pop .2s ease-out; }
 .confirm h3 { margin: 0; font-size: 19px; font-weight: 600; }
@@ -121,8 +122,8 @@ html, body { overscroll-behavior-y: contain; }
 @media (prefers-reduced-motion: reduce) { .overlay, .confirm { animation: none; } }
 .confirm p { margin: 0; font-size: 15px; color: var(--muted); }
 .confirm .btns { display: flex; gap: 10px; flex-wrap: wrap; }
-.primary { background: var(--matcha); border-color: var(--matcha); color: var(--bg); }
-.primary:hover { color: var(--bg); opacity: .9; }
+.primary { background: var(--matcha); border-color: var(--matcha); color: var(--ink); }
+.primary:hover { color: var(--ink); opacity: .9; }
 .toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 20px); opacity: 0; background: var(--ink); color: var(--bg); font-size: 14px; font-weight: 600; padding: 10px 16px; border-radius: 99px; transition: opacity .25s, transform .25s; pointer-events: none; max-width: calc(100% - 32px); text-align: center; white-space: nowrap; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
@@ -133,7 +134,7 @@ html, body { overscroll-behavior-y: contain; }
 .empty { color: var(--muted); font-size: 15px; margin: 0; }
 .back { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px 14px 8px 10px; border: 1px solid var(--line); border-radius: 99px; margin-bottom: -16px; }
 .back svg { width: 16px; height: 16px; }
-.back:hover { border-color: var(--matcha); color: var(--matcha); }
+.back:hover { border-color: var(--ink); color: var(--ink); }
 </style>
 </head>
 <body>
