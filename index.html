@@ -108,7 +108,9 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
 .day span { color: var(--muted); font-size: 14px; min-width: 0; }
 .day strong { font-weight: 600; }
 .empty { color: var(--muted); font-size: 15px; margin: 0; }
-.back { color: var(--muted); font-size: 14px; }
+.back { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px 14px 8px 10px; border: 1px solid var(--line); border-radius: 99px; margin-bottom: -16px; }
+.back svg { width: 16px; height: 16px; }
+.back:hover { border-color: var(--matcha); color: var(--matcha); }
 </style>
 </head>
 <body>
@@ -184,12 +186,12 @@ function storyCard(ed, i, slot, opts = {}) {
 }
 
 let current = null;
-function renderEdition(ed, isToday) {
+function renderEdition(ed, isToday, fromPast) {
   current = ed;
   const st = stateFor(ed);
   $("date").textContent = longDate(ed.date);
   $("view").innerHTML = `
-    ${isToday ? "" : `<a class="back" href="#past">&larr; All past cups</a>`}
+    ${fromPast ? `<a class="back" href="#past"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to past cups</a>` : ""}
     <section class="section">
       <h2>${isToday ? "Today's sip" : "That day's sip"}</h2>
       <div class="quote"><blockquote>“${esc(ed.quote.text)}”</blockquote>
@@ -238,7 +240,7 @@ async function route() {
   try {
     if (h === "past") return renderPast();
     if (h === "saved") return renderSaved();
-    if (h.startsWith("d-") && days.includes(h.slice(2))) return renderEdition(await edition(h.slice(2)), h.slice(2) === days[0]);
+    if (h.startsWith("d-") && days.includes(h.slice(2))) return renderEdition(await edition(h.slice(2)), h.slice(2) === days[0], true);
     renderEdition(await edition(days[0]), true);
   } catch (e) {
     $("view").innerHTML = `<p class="empty">The kettle is still heating. Check your connection and pull down to refresh.</p>`;
