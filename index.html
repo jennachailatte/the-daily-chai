@@ -96,6 +96,21 @@ html, body { overscroll-behavior-y: contain; }
 @keyframes slosh { to { transform: translateX(-50%); } }
 @keyframes drain { to { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .pour { display: none; } .pull { transition: none; } }
+.addons { display: flex; gap: 8px; flex-wrap: wrap; }
+.addon { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px 7px 11px; font-size: 14px; font-weight: 500; color: var(--muted); }
+.addon svg { width: 17px; height: 17px; }
+.addon[aria-pressed="true"] { color: var(--bg); background: var(--matcha); border-color: var(--matcha); }
+.addon[aria-pressed="true"]:hover { color: var(--bg); }
+.addonHint { margin: -4px 0 2px; font-size: 13px; color: var(--muted); }
+#tea { display: flex; flex-direction: column; gap: 14px; }
+.pour[data-flavor="sweet"] .tea { background: linear-gradient(to top, #9A5B3C, #F0C7A0); }
+.pour[data-flavor="sweet"] .wave { fill: #F0C7A0; }
+.pour[data-flavor="iced"] .tea { background: linear-gradient(to top, #5A3A22, #C9A27A 70%, #E9DCCB); }
+.pour[data-flavor="iced"] .wave { fill: #E9DCCB; }
+.pour[data-flavor="iced"] .tea::before, .pour[data-flavor="iced"] .tea::after { content: ""; position: absolute; width: 64px; height: 64px; border-radius: 12px; border: 2px solid rgba(242, 253, 255, .7); background: rgba(242, 253, 255, .18); transform: rotate(14deg); top: 18%; left: 18%; }
+.pour[data-flavor="iced"] .tea::after { width: 48px; height: 48px; top: 30%; left: 62%; transform: rotate(-10deg); }
+.pour[data-flavor="hot"] .tea { background: linear-gradient(to top, #4A140A, #C8562E); }
+.pour[data-flavor="hot"] .wave { fill: #C8562E; }
 .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
 .tabs a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 99px; border: 1px solid var(--line); }
 .tabs a[aria-current="page"] { color: var(--ink); background: var(--sage); border-color: var(--sage); }
@@ -187,15 +202,36 @@ async function edition(day) { return cache[day] ||= await getJSON("editions/" + 
 
 // Per-edition state: which 4 stories are poured, and the next one in the pot.
 const pour = {};
-function stateFor(ed) { return pour[ed.date] ||= { shown: [0, 1, 2, 3].filter(i => i < ed.stories.length), next: 4 }; }
+// Add-ons: one flavor at a time, or none for the classic cup.
+const ADDONS = {
+  sweet: { name: "Sweeter", hint: "Only the good news: wins, launches and feel-good moves.", pour: "Stirring in something sweet",
+    icon: '<path d="M7 9h10l-1.2 9.5a1.5 1.5 0 0 1-1.5 1.3H9.7a1.5 1.5 0 0 1-1.5-1.3z"/><path d="M12 9V6.5M12 6.5c0-1.5 1.5-2.5 3-2.5"/>' },
+  iced:  { name: "Iced", hint: "Follow the money: funding, deals, pricing and spend.", pour: "Adding ice",
+    icon: '<rect x="5" y="5" width="7" height="7" rx="1.5"/><rect x="12" y="12" width="7" height="7" rx="1.5"/>' },
+  hot:   { name: "Hot", hint: "Fresh off the stove: the newest stories in this cup.", pour: "Turning up the heat",
+    icon: '<path d="M12 21c-3.3 0-6-2.4-6-5.6 0-3.6 3.4-5.3 3.4-9.4 2.6 1.3 4.3 3.6 4.6 6 .7-.6 1.2-1.6 1.3-2.7C17.2 10.7 18 12.7 18 15.4 18 18.6 15.3 21 12 21z"/>' }
+};
+let addon = null;
+function pool(ed) { const all = ed.stories.map((_, i) => i); return addon ? all.filter(i => (ed.stories[i].addons || []).includes(addon)) : all; }
+function stateFor(ed) { const p = pool(ed); return pour[ed.date + "|" + (addon || "")] ||= { shown: p.slice(0, 4), next: 4 }; }
 // Take the next story from the pot that isn't already on screen, looping back to the start when the pot runs dry.
 function nextStory(ed) {
-  const st = stateFor(ed);
-  for (let k = 0; k < ed.stories.length; k++) {
-    const i = st.next % ed.stories.length; st.next++;
+  const st = stateFor(ed), p = pool(ed);
+  for (let k = 0; k < p.length; k++) {
+    const i = p[st.next % p.length]; st.next++;
     if (!st.shown.includes(i)) return i;
   }
   return st.shown[0];
+}
+function addonBar(ed) {
+  if (!ed.stories.some(s => s.addons)) return "";
+  return `<div class="addons" role="group" aria-label="Add-ons">${Object.entries(ADDONS).map(([k, a]) =>
+    `<button type="button" class="addon" data-addon="${k}" aria-pressed="${addon === k}"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${a.icon}</svg>${a.name}</button>`).join("")}</div>
+    <p class="addonHint">${addon ? esc(ADDONS[addon].hint) : "Make it sweeter, iced or hot. Tap again for the classic."}</p>`;
+}
+function teaSection(ed) {
+  const st = stateFor(ed);
+  return `${addonBar(ed)}<div class="stories" id="stories">${st.shown.map((i, slot) => storyCard(ed, i, slot)).join("")}</div>`;
 }
 let toastTimer;
 function toast(msg) {
@@ -205,6 +241,7 @@ function toast(msg) {
   clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 2200);
 }
 function redrawStories() { const st = stateFor(current); $("stories").innerHTML = st.shown.map((i, n) => storyCard(current, i, n)).join(""); }
+function redrawTea() { $("tea").innerHTML = teaSection(current); }
 
 function storyCard(ed, i, slot, opts = {}) {
   const s = ed.stories[i];
@@ -237,7 +274,7 @@ function renderEdition(ed, isToday, fromPast) {
       <div class="head"><h2>${isToday ? "Today's tea" : "That day's tea"}</h2>
         ${ed.stories.length > 4 ? `<button type="button" class="refill" id="refill">Pour me another</button>` : ""}</div>
       <div id="confirmBox"></div>
-      <div class="stories" id="stories">${st.shown.map((i, slot) => storyCard(ed, i, slot)).join("")}</div>
+      <div id="tea">${teaSection(ed)}</div>
     </section>
     ${ed.term ? `<section class="term"><span class="label">Term of the day</span><strong>${esc(ed.term.name)}</strong><p>${esc(ed.term.def)}</p></section>` : ""}`;
   $("foot").innerHTML = "Brewed from " + (ed.sources || []).map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>`).join(" and ") +
@@ -293,8 +330,9 @@ function openConfirm() {
 
 // Full-screen cup filling up. midway() runs while the screen is full, then the tea drains away.
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-function pourCup(label, midway, ready = Promise.resolve()) {
+function pourCup(label, midway, ready = Promise.resolve(), flavor = "") {
   const el = $("pour");
+  el.dataset.flavor = flavor;
   $("pourLabel").textContent = label;
   if (reduceMotion) { el.hidden = true; return ready.then(() => midway && midway()); }
   el.hidden = false; el.classList.remove("drain", "fill"); void el.offsetWidth; el.classList.add("fill");
@@ -349,6 +387,14 @@ document.addEventListener("click", e => {
     return;
   }
   if (e.target.closest("#refill")) { openConfirm(); return; }
+  const ad = e.target.closest("button[data-addon]");
+  if (ad && current) {
+    const k = ad.dataset.addon, turningOff = addon === k;
+    pourCup(turningOff ? "Back to the classic" : ADDONS[k].pour, () => {
+      addon = turningOff ? null : k; redrawTea();
+    }, undefined, turningOff ? "" : k).then(() => toast(turningOff ? "Classic chai" : ADDONS[k].name + " chai, coming right up"));
+    return;
+  }
   if (e.target.closest("#keep") || e.target.id === "overlay") { $("confirmBox").innerHTML = ""; return; }
   if (e.target.closest("#doRefill")) {
     $("confirmBox").innerHTML = "";
