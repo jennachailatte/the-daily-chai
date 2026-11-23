@@ -78,11 +78,10 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
 .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .share { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px 6px 10px; }
 .share svg { width: 16px; height: 16px; }
-.tip { display: flex; gap: 12px; align-items: center; justify-content: space-between; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; margin-top: -12px; }
-.tip p { margin: 0; font-size: 14px; color: var(--muted); min-width: 0; }
-.tip strong { color: var(--ink); font-weight: 600; }
-.nowrap { white-space: nowrap; }
-.tip button { flex-shrink: 0; }
+.tip { position: fixed; left: 0; right: 0; bottom: 0; z-index: 15; display: flex; gap: 10px; align-items: center; justify-content: space-between; background: var(--surface); border-top: 1px solid var(--line); padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.tip p { margin: 0; font-size: 13px; color: var(--muted); min-width: 0; max-width: 600px; }
+.tip button { flex-shrink: 0; border: 0; width: 32px; height: 32px; padding: 0; display: grid; place-items: center; color: var(--muted); }
+.tip svg { width: 16px; height: 16px; }
 .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
 .tabs a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 99px; border: 1px solid var(--line); }
 .tabs a[aria-current="page"] { color: var(--ink); background: var(--sage); border-color: var(--sage); }
@@ -132,11 +131,6 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
     <p class="tag">Spilling the B2B tech tea, one cup a day.</p>
   </header>
 
-  <div class="tip" id="tip" hidden>
-    <p><strong>Make it an app.</strong> In Safari, tap <span class="nowrap">Share</span>, then <span class="nowrap">"Add to Home Screen."</span> Your daily cup will be one tap away.</p>
-    <button type="button" id="tipClose" aria-label="Dismiss tip">Got it</button>
-  </div>
-
   <nav class="tabs" aria-label="Sections">
     <a href="#today" data-tab="today">Today</a>
     <a href="#past" data-tab="past">Past cups</a>
@@ -146,6 +140,11 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
   <main id="view" aria-live="polite"></main>
 
   <footer id="foot"></footer>
+</div>
+
+<div class="tip" id="tip" hidden>
+  <p>Tip: in Safari, tap Share, then "Add to Home Screen" to keep Tea Over Coffee one tap away.</p>
+  <button type="button" id="tipClose" aria-label="Dismiss tip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
 </div>
 
 <script>

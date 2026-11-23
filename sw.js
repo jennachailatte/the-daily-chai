@@ -1,5 +1,5 @@
 // Network first so each morning's edition shows up; falls back to the last copy when offline.
-const CACHE = "tea-v12";
+const CACHE = "tea-v13";
 self.addEventListener("install", e => { self.skipWaiting(); });
 self.addEventListener("activate", e => e.waitUntil(self.clients.claim()));
 self.addEventListener("fetch", e => {
