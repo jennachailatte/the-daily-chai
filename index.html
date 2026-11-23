@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: one narrow reading column, like a morning note. Quote first, then four stories you can swap. */
+/* Layout: one narrow reading column with a tab bar: Today, Past cups, Saved. */
 :root {
   /* Palette: Coffee Bean, Oxidized Iron, Azure Mist, Electric Sapphire, Slate Grey. Always dark. */
   --bg: #1C0F13;
@@ -73,115 +73,173 @@ button:disabled { opacity: .45; cursor: default; }
 .term p { margin: 0; color: var(--muted); font-size: 15px; }
 footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
 @media (prefers-reduced-motion: reduce) { .story { transition: none; } }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tabs a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 99px; border: 1px solid var(--line); }
+.tabs a[aria-current="page"] { color: var(--ink); background: var(--sage); border-color: var(--sage); }
+.section { display: flex; flex-direction: column; gap: 14px; }
+.story .actions { display: flex; gap: 16px; align-items: center; }
+.save { border: 0; padding: 4px 0; color: var(--chai); }
+.save[aria-pressed="true"] { color: var(--ink); }
+.list { display: flex; flex-direction: column; gap: 10px; }
+.day { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: var(--surface); border-radius: 14px; padding: 16px 18px; text-decoration: none; color: var(--ink); }
+.day span { color: var(--muted); font-size: 14px; min-width: 0; }
+.day strong { font-weight: 600; }
+.empty { color: var(--muted); font-size: 15px; margin: 0; }
+.back { color: var(--muted); font-size: 14px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="date">Monday, November 23, 2026</div>
+    <div class="date" id="date"></div>
     <h1>Tea <span>over</span> Coffee</h1>
-    <p class="tag">The truth about B2B tech, one cup a day.</p>
+    <p class="tag">Spilling the B2B tech tea, one cup a day.</p>
   </header>
 
-  <section class="quote" aria-live="polite">
-    <div class="row"><span class="label">Today's sip</span><button id="nextQuote" type="button">Another</button></div>
-    <blockquote id="qText"></blockquote>
-    <div class="who" id="qWho"></div>
-  </section>
+  <nav class="tabs" aria-label="Sections">
+    <a href="#today" data-tab="today">Today</a>
+    <a href="#past" data-tab="past">Past cups</a>
+    <a href="#saved" data-tab="saved">Saved <span id="savedCount"></span></a>
+  </nav>
 
-  <section style="display:flex;flex-direction:column;gap:14px">
-    <h2>Today's tea</h2>
-    <div class="stories" id="stories" aria-live="polite"></div>
-  </section>
+  <main id="view" aria-live="polite"></main>
 
-  <section class="term">
-    <span class="label">Term of the day</span>
-    <strong>Agentic commerce</strong>
-    <p>When an AI agent finds, compares and buys things on someone's behalf. The new question: how do you market to a buyer that is software?</p>
-  </section>
-
-  <footer>Stories are summarized from <a href="https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-21-2026/" target="_blank" rel="noopener">The Agile Brand Guide (Nov 21)</a> and <a href="https://theartofcto.com/industry-outlook/2026-w47-saas-industry-outlook" target="_blank" rel="noopener">The Art of CTO SaaS outlook (Nov 16)</a>. Takeaways are commentary, not reporting. New edition every morning at 7:12 AM Pacific.</footer>
+  <footer id="foot"></footer>
 </div>
 
 <script>
-const SRC_A = "https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-21-2026/";
-const SRC_B = "https://theartofcto.com/industry-outlook/2026-w47-saas-industry-outlook";
-const STORIES = [
-  { h: "AWS Marketplace now lets AI agents do the buying", d: "Nov 19", tag: "Go-to-market", src: SRC_A,
-    tea: "AI agents can now purchase select AWS Marketplace products. Buyers set spending limits first, every agent purchase is logged, and an Agent Mode asks a human to confirm. AWS says Agent Mode buyers convert at 6% to 7%, though it didn't share how it measured that.",
-    pmm: "If agents are shopping, your listing, pricing page and docs have to be readable by a machine. Clear, structured product info becomes a marketing asset." },
-  { h: "Klarna is the first non-card option in Adyen's agent checkout", d: "Nov 20", tag: "Partnership", src: SRC_A,
-    tea: "Klarna is now inside Adyen Agentic, Adyen's suite for purchases made by AI agents. Shoppers still confirm each purchase, and merchants already using Klarna through Adyen can turn it on with no new integration.",
-    pmm: "\"No new integration\" is the whole pitch. In B2B, lowering switching effort often sells better than adding features." },
-  { h: "Dropbox is buying Tigris Data for $350 million", d: "Earlier this month", tag: "Acquisition", src: SRC_B,
-    tea: "Dropbox is acquiring Tigris Data to power DBX Agent Cloud, a storage platform for developers building AI models and agents.",
-    pmm: "A consumer-famous brand is repositioning toward developers and AI. Watch how they rewrite their messaging for a brand-new audience." },
-  { h: "Base acquires Rubiq to build a \"Customer Graph\"", d: "Nov 20", tag: "Acquisition", src: SRC_A,
-    tea: "Base, an AI customer-growth platform, bought Rubiq, a young company that maps customer context into a knowledge graph. It now powers the Customer Graph in Base's Orbit platform. Base lists Adobe, Okta and ZoomInfo as customers.",
-    pmm: "Notice the named logos. Customer logos are social proof, and B2B buyers look for them before they read anything else." },
-  { h: "AI usage keeps climbing while AI spend flattens", d: "Earlier this month", tag: "Market trend", src: SRC_B,
-    tea: "Ramp's spending data shows companies using more AI while spending roughly the same, because of price cuts and tighter cost controls among heavy users.",
-    pmm: "When budgets tighten, messaging shifts from \"look what it can do\" to \"look what it saves you.\" ROI stories win." },
-  { h: "Salesforce study: shoppers don't trust agents with their wallet yet", d: "Nov 20", tag: "Research", src: SRC_A,
-    tea: "In a survey of 2,500+ holiday shoppers, 22% of AI-agent users had an agent blocked from finishing a purchase, 27% said an agent bought something too expensive, and 73% are uncomfortable giving an agent payment info.",
-    pmm: "Trust is the objection to handle. Vendors in this space will lead with controls, limits and approvals, just like AWS did." },
-  { h: "Siteimprove sells its Accessibility Agent to other agents", d: "Nov 19", tag: "Pricing", src: SRC_A,
-    tea: "Siteimprove launched as a partner on AWS's agent marketplace. Other AI agents can pay per request to use its Accessibility Agent. The price per request wasn't shared.",
-    pmm: "Pay-per-request is usage-based pricing. Learn the difference between seat, usage and outcome pricing; it comes up in every PMM interview." },
-  { h: "Fast Simon ships an MCP server for developers", d: "Nov 19", tag: "Product launch", src: SRC_A,
-    tea: "Fast Simon, a product discovery platform, released an MCP server that works in AI coding tools like Claude Code and Cursor. Merchants can ask it questions about top searches and widget performance.",
-    pmm: "MCP is how tools plug into AI assistants. Launching \"where the user already works\" is a classic distribution play." },
-  { h: "Mirendil and Mercor raise giant AI rounds", d: "Earlier this month", tag: "Funding", src: SRC_B,
-    tea: "Mirendil raised a $1 billion Series A and Mercor raised $750 million, among the largest rounds of the week, both in AI infrastructure and agentic AI.",
-    pmm: "Big rounds mean those companies will hire and spend on go-to-market soon. Funding news doubles as a job-search lead list." },
-  { h: "Clinch adds ByteDance's image and video models for advertisers", d: "Nov 19", tag: "Product launch", src: SRC_A,
-    tea: "Clinch, an ad platform, added ByteDance's Seedream and Seedance models alongside OpenAI and Google. Clients can control which models their teams use and how content is approved.",
-    pmm: "Enterprise buyers care about governance as much as features. \"Control who can use what\" is a selling point, not a footnote." }
-];
-const QUOTES = [
-  { t: "You've got to start with the customer experience and work back toward the technology, not the other way around.", w: "Steve Jobs, co-founder of Apple (1997)",
-    y: "That's product marketing in one line. Start with the buyer's problem, then explain the product." },
-  { t: "If you are not embarrassed by the first version of your product, you've launched too late.", w: "Reid Hoffman, co-founder of LinkedIn",
-    y: "This app is version one on purpose. Ship, learn, improve." },
-  { t: "Price is what you pay. Value is what you get.", w: "Warren Buffett, CEO of Berkshire Hathaway (2008 letter)",
-    y: "The core of every pricing page and every ROI story." },
-  { t: "Software is eating the world.", w: "Marc Andreessen, co-founder of Andreessen Horowitz (2011)",
-    y: "Fifteen years later, swap in \"AI agents\" and you have this week's headlines." }
-];
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmt = (d, opts) => new Date(d + "T12:00:00").toLocaleDateString("en-US", opts);
+const longDate = d => fmt(d, { weekday: "long", month: "long", day: "numeric", year: "numeric" });
 
-let shown = [0, 1, 2, 3];
-let nextIdx = 4;
-let qi = 0;
-const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+// Saved stories live on this phone only.
+const KEY = "tea-saved";
+function loadSaved() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch { return []; } }
+function storeSaved(list) { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch {} }
+let saved = loadSaved();
 
-function card(s, slot) {
+let days = [];
+const cache = {};
+async function getJSON(url) { const r = await fetch(url, { cache: "no-cache" }); if (!r.ok) throw new Error(r.status); return r.json(); }
+async function edition(day) { return cache[day] ||= await getJSON("editions/" + day + ".json"); }
+
+// Per-edition state: which 4 stories are poured, and the next one in the pot.
+const pour = {};
+function stateFor(ed) { return pour[ed.date] ||= { shown: [0, 1, 2, 3].filter(i => i < ed.stories.length), next: 4 }; }
+
+function storyCard(ed, i, slot, opts = {}) {
+  const s = ed.stories[i];
+  const id = ed.date + "#" + i;
+  const isSaved = saved.some(x => x.id === id);
+  const canPour = !opts.noPour && stateFor(ed).next < ed.stories.length;
   return `<article class="story" id="slot${slot}">
-    <div class="meta"><span class="kind">${esc(s.tag)}</span><span>${esc(s.d)}</span></div>
-    <h3>${esc(s.h)}</h3>
-    <p>${esc(s.tea)}</p>
-    <p class="pmm"><b>Takeaway</b> ${esc(s.pmm)}</p>
-    <div class="foot"><a href="${s.src}" target="_blank" rel="noopener">Source</a>
-      ${nextIdx < STORIES.length ? `<button type="button" class="swap" data-slot="${slot}">Swap story</button>` : ""}</div>
+    <div class="meta"><span class="kind">${esc(s.tag)}</span><span>${esc(s.date)}</span></div>
+    <h3>${esc(s.headline)}</h3>
+    <p>${esc(s.summary)}</p>
+    <p class="pmm"><b>Takeaway</b> ${esc(s.takeaway)}</p>
+    <div class="foot"><a href="${esc(s.source)}" target="_blank" rel="noopener">Source</a>
+      <div class="actions">
+        <button type="button" class="save" data-save="${esc(id)}" aria-pressed="${isSaved}">${isSaved ? "Saved" : "Save for later"}</button>
+        ${canPour ? `<button type="button" class="swap" data-slot="${slot}">Pour me another</button>` : ""}
+      </div></div>
   </article>`;
 }
-function render() {
-  document.getElementById("stories").innerHTML = shown.map((i, slot) => card(STORIES[i], slot)).join("");
+
+let current = null;
+function renderEdition(ed, isToday) {
+  current = ed;
+  const st = stateFor(ed);
+  $("date").textContent = longDate(ed.date);
+  $("view").innerHTML = `
+    ${isToday ? "" : `<a class="back" href="#past">&larr; All past cups</a>`}
+    <section class="quote">
+      <span class="label">Today's sip</span>
+      <blockquote>“${esc(ed.quote.text)}”</blockquote>
+      <div class="who">${esc(ed.quote.who)}</div>
+    </section>
+    <section class="section">
+      <h2>${isToday ? "Today's tea" : "That day's tea"}</h2>
+      <div class="stories" id="stories">${st.shown.map((i, slot) => storyCard(ed, i, slot)).join("")}</div>
+    </section>
+    ${ed.term ? `<section class="term"><span class="label">Term of the day</span><strong>${esc(ed.term.name)}</strong><p>${esc(ed.term.def)}</p></section>` : ""}`;
+  $("foot").innerHTML = "Brewed from " + (ed.sources || []).map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>`).join(" and ") +
+    ". Takeaways are commentary, not reporting. A fresh cup every morning at 7:12 AM Pacific.";
 }
-document.getElementById("stories").addEventListener("click", e => {
+
+function renderPast() {
+  current = null;
+  $("date").textContent = "Every cup so far";
+  $("view").innerHTML = `<section class="section"><h2>Past cups</h2><div class="list">${
+    days.map((d, n) => `<a class="day" href="#d-${d}"><strong>${fmt(d, { weekday: "short", month: "short", day: "numeric" })}</strong><span>${n === 0 ? "Today" : "Read again"} &rarr;</span></a>`).join("")
+  }</div></section>`;
+  $("foot").textContent = "";
+}
+
+function renderSaved() {
+  current = null;
+  $("date").textContent = "Your reading list";
+  $("view").innerHTML = `<section class="section"><h2>Saved</h2>${
+    saved.length ? `<div class="stories">${saved.slice().reverse().map(x => {
+      const ed = { date: x.id.split("#")[0], stories: { [x.i]: x.story } };
+      return storyCard(ed, x.i, "s" + x.i, { noPour: true }).replace('<div class="meta">', `<div class="meta"><span>${fmt(ed.date, { month: "short", day: "numeric" })} cup ·</span>`);
+    }).join("")}</div>`
+    : `<p class="empty">Nothing saved yet. Tap "Save for later" on any story and it will wait for you here.</p>`
+  }</section>`;
+  $("foot").textContent = "Saved stories stay on this phone.";
+}
+
+function updateCount() { $("savedCount").textContent = saved.length ? "(" + saved.length + ")" : ""; }
+
+async function route() {
+  const h = location.hash.slice(1) || "today";
+  const tab = h === "past" || h.startsWith("d-") ? "past" : h === "saved" ? "saved" : "today";
+  document.querySelectorAll(".tabs a").forEach(a => a.dataset.tab === tab ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  updateCount();
+  try {
+    if (h === "past") return renderPast();
+    if (h === "saved") return renderSaved();
+    if (h.startsWith("d-") && days.includes(h.slice(2))) return renderEdition(await edition(h.slice(2)), h.slice(2) === days[0]);
+    renderEdition(await edition(days[0]), true);
+  } catch (e) {
+    $("view").innerHTML = `<p class="empty">The kettle is still heating. Check your connection and pull down to refresh.</p>`;
+  }
+}
+
+document.addEventListener("click", e => {
+  const sv = e.target.closest("button[data-save]");
+  if (sv) {
+    const id = sv.dataset.save;
+    const at = saved.findIndex(x => x.id === id);
+    if (at >= 0) saved.splice(at, 1);
+    else {
+      const [d, i] = id.split("#");
+      const story = cache[d]?.stories[+i];
+      if (story) saved.push({ id, i: +i, story });
+    }
+    storeSaved(saved); updateCount();
+    if (location.hash === "#saved") return renderSaved();
+    const on = saved.some(x => x.id === id);
+    sv.setAttribute("aria-pressed", on); sv.textContent = on ? "Saved" : "Save for later";
+    return;
+  }
   const b = e.target.closest("button[data-slot]");
-  if (!b || nextIdx >= STORIES.length) return;
+  if (!b || !current) return;
+  const st = stateFor(current);
+  if (st.next >= current.stories.length) return;
   const slot = +b.dataset.slot;
-  const el = document.getElementById("slot" + slot);
-  el.classList.add("fade");
-  setTimeout(() => { shown[slot] = nextIdx++; render(); }, 220);
+  $("slot" + slot).classList.add("fade");
+  setTimeout(() => {
+    st.shown[slot] = st.next++;
+    $("stories").innerHTML = st.shown.map((i, n) => storyCard(current, i, n)).join("");
+  }, 220);
 });
-function showQuote() {
-  const q = QUOTES[qi];
-  document.getElementById("qText").textContent = "“" + q.t + "”";
-  document.getElementById("qWho").textContent = q.w;
-}
-document.getElementById("nextQuote").addEventListener("click", () => { qi = (qi + 1) % QUOTES.length; showQuote(); });
-showQuote(); render();
+
+window.addEventListener("hashchange", () => { route(); window.scrollTo(0, 0); });
+(async () => {
+  try { days = await getJSON("editions/index.json"); } catch { days = []; }
+  route();
+})();
 </script>
 <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});</script>
 </body>

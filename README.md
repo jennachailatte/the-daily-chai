@@ -1,8 +1,10 @@
 # Tea Over Coffee
 
-A daily five-minute digest of B2B tech news, written for someone learning B2B product marketing. Each story has a plain-English summary and a "PMM takeaway", plus a daily quote from a founder, CEO or investor.
+A daily five-minute digest of B2B tech news, written for someone learning B2B product marketing. Each story has a plain-English summary and a takeaway, plus a quote of the day from a founder, CEO or investor.
 
-- `index.html`: the app. Stories and quotes live in the `STORIES` and `QUOTES` arrays near the bottom.
-- `manifest.json`, `sw.js`, `icons/`: make it installable on a phone ("Add to Home Screen") and readable offline.
+- `editions/YYYY-MM-DD.json`: one file per day (quote, term of the day, 10 stories, sources). The first 4 stories show; the rest are poured in with "Pour me another".
+- `editions/index.json`: list of edition dates, newest first. The app opens the first one.
+- `index.html`: the app (Today, Past cups, Saved). Saved stories are kept on the phone.
+- `manifest.json`, `sw.js`, `icons/`: make it installable ("Add to Home Screen") and readable offline.
 
-Hosted with GitHub Pages. A new edition is published every morning at 7:12 AM Pacific.
+Hosted with GitHub Pages. A new edition is added every morning at 7:12 AM Pacific.
