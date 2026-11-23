@@ -89,7 +89,7 @@ html, body { overscroll-behavior-y: contain; }
 .pour .tea { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: linear-gradient(to top, #E2D3BF, var(--ink)); }
 .pour.fill .tea { animation: fillup 1.5s cubic-bezier(.45,.05,.35,1) forwards; }
 .pour .wave { position: absolute; left: 0; bottom: calc(100% - 1px); width: 200%; height: 28px; fill: var(--ink); animation: slosh 1.2s linear infinite; }
-.pourText { position: relative; font-family: var(--title); font-weight: 800; text-transform: uppercase; letter-spacing: .06em; font-size: 22px; color: var(--ink); text-align: center; padding: 0 24px;; font-size: 16px; background: var(--bg); padding: 12px 20px; border-radius: 99px; }
+.pourText { position: relative; font-family: var(--title); font-weight: 800; text-transform: uppercase; letter-spacing: .06em; font-size: 22px; color: var(--ink); text-align: center; padding: 0 24px;; font-size: 18px; color: #F3E8D8; mix-blend-mode: difference; }
 .pour.drain { animation: drain .55s ease-in forwards; }
 @keyframes fillup { 0% { height: 0; } 100% { height: 112%; } }
 @keyframes slosh { to { transform: translateX(-50%); } }
