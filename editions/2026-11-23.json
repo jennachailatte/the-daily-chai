@@ -1,103 +1,98 @@
 {
   "date": "2026-11-23",
   "quote": {
-    "text": "You've got to start with the customer experience and work back toward the technology, not the other way around.",
-    "who": "Steve Jobs, co-founder of Apple (1997)"
+    "text": "If you are not embarrassed by the first version of your product, you've launched too late.",
+    "who": "Reid Hoffman, co-founder of LinkedIn"
   },
   "term": {
-    "name": "Agentic commerce",
-    "def": "When an AI agent finds, compares and buys things on someone’s behalf. The new question: how do you market to a buyer that is software?"
+    "name": "Net revenue retention (NRR)",
+    "def": "How much revenue you keep and grow from last year's customers, counting upgrades and losses. Over 100% means existing customers spend more each year, even with zero new sales."
   },
   "stories": [
     {
-      "headline": "AWS Marketplace now lets AI agents do the buying",
-      "date": "Nov 19",
-      "tag": "Go-to-market",
-      "source": "https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-21-2026/",
-      "summary": "AI agents can now purchase select AWS Marketplace products. Buyers set spending limits first, every agent purchase is logged, and an Agent Mode asks a human to confirm. AWS says Agent Mode buyers convert at 6% to 7%, though it didn't share how it measured that.",
-      "takeaway": "If agents are shopping, your listing, pricing page and docs have to be readable by a machine. Clear, structured product info becomes a marketing asset."
-    },
-    {
-      "headline": "Klarna is the first non-card option in Adyen's agent checkout",
-      "date": "Nov 20",
-      "tag": "Partnership",
-      "source": "https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-21-2026/",
-      "summary": "Klarna is now inside Adyen Agentic, Adyen's suite for purchases made by AI agents. Shoppers still confirm each purchase, and merchants already using Klarna through Adyen can turn it on with no new integration.",
-      "takeaway": "\"No new integration\" is the whole pitch. In B2B, lowering switching effort often sells better than adding features."
-    },
-    {
-      "headline": "Dropbox is buying Tigris Data for $350 million",
-      "date": "Earlier this month",
+      "headline": "Bending Spoons buys Mailchimp from Intuit for $3.68 billion",
+      "date": "This week",
       "tag": "Acquisition",
-      "source": "https://theartofcto.com/industry-outlook/2026-w47-saas-industry-outlook",
-      "summary": "Dropbox is acquiring Tigris Data to power DBX Agent Cloud, a storage platform for developers building AI models and agents.",
-      "takeaway": "A consumer-famous brand is repositioning toward developers and AI. Watch how they rewrite their messaging for a brand-new audience."
+      "source": "https://nonbindingthoughts.substack.com/p/please-advise-deal-sheet-nov-20-2026",
+      "summary": "Bending Spoons is buying Mailchimp for $3.31 billion in cash plus $368 million in stock, with the deal expected to close in early 2027. Intuit paid $12 billion for Mailchimp in 2021, and Mailchimp's revenue was $313 million last quarter, down 1% from a year earlier.",
+      "takeaway": "A beloved brand with flat growth gets valued like one. Brand love is great, but buyers pay for growth, so marketing has to show up in the numbers."
     },
     {
-      "headline": "Base acquires Rubiq to build a \"Customer Graph\"",
-      "date": "Nov 20",
+      "headline": "Palo Alto Networks is buying Applied Compute for $4.5 billion",
+      "date": "This week",
       "tag": "Acquisition",
-      "source": "https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-21-2026/",
-      "summary": "Base, an AI customer-growth platform, bought Rubiq, a young company that maps customer context into a knowledge graph. It now powers the Customer Graph in Base's Orbit platform. Base lists Adobe, Okta and ZoomInfo as customers.",
-      "takeaway": "Notice the named logos. Customer logos are social proof, and B2B buyers look for them before they read anything else."
+      "source": "https://nonbindingthoughts.substack.com/p/please-advise-deal-sheet-nov-20-2026",
+      "summary": "The security giant is paying $4.5 billion in stock for Applied Compute. The young company hit about $100 million in annualized revenue within 18 months of being founded, and could add more than $1 billion of ARR by fiscal 2029.",
+      "takeaway": "Big platforms buy speed. When a startup grows this fast, the incumbent's pitch shifts from \"we built it\" to \"we bought the best and plugged it in.\""
     },
     {
-      "headline": "AI usage keeps climbing while AI spend flattens",
-      "date": "Earlier this month",
-      "tag": "Market trend",
-      "source": "https://theartofcto.com/industry-outlook/2026-w47-saas-industry-outlook",
-      "summary": "Ramp's spending data shows companies using more AI while spending roughly the same, because of price cuts and tighter cost controls among heavy users.",
-      "takeaway": "When budgets tighten, messaging shifts from \"look what it can do\" to \"look what it saves you.\" ROI stories win."
+      "headline": "TPG and Corpay take BILL private in a roughly $6 billion deal",
+      "date": "This week",
+      "tag": "Acquisition",
+      "source": "https://nonbindingthoughts.substack.com/p/please-advise-deal-sheet-nov-20-2026",
+      "summary": "Private equity firm TPG will pay $63.25 a share in cash for BILL, the small-business payments and spend software company, a 31% premium. Payments company Corpay is putting in $1.1 billion for about a third of the equity, with an option to buy the rest later.",
+      "takeaway": "When a strategic partner co-invests, expect bundling next. Watch for BILL and Corpay to start selling together to the same finance teams."
     },
     {
-      "headline": "Salesforce study: shoppers don't trust agents with their wallet yet",
-      "date": "Nov 20",
-      "tag": "Research",
-      "source": "https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-21-2026/",
-      "summary": "In a survey of 2,500+ holiday shoppers, 22% of AI-agent users had an agent blocked from finishing a purchase, 27% said an agent bought something too expensive, and 73% are uncomfortable giving an agent payment info.",
-      "takeaway": "Trust is the objection to handle. Vendors in this space will lead with controls, limits and approvals, just like AWS did."
+      "headline": "Levenza launches enterprise AI agents with 170% net revenue retention",
+      "date": "Nov 23",
+      "tag": "Product launch",
+      "source": "https://agilebrandguide.com/levenza-launches-personal-ai-agents-globally-for-the-enterprise",
+      "summary": "Levenza made its personal AI agents for Teams, Slack and Outlook available worldwide and named customers like Oliver Wyman, Kearney and Spencer Stuart among 300+ users. It says it is profitable without outside funding, with 170% net revenue retention, and users report saving up to three hours a day.",
+      "takeaway": "Look at how the launch is built: named logos, a retention stat and a time-saved claim. That trio is a classic B2B proof stack."
     },
     {
-      "headline": "Siteimprove sells its Accessibility Agent to other agents",
-      "date": "Nov 19",
-      "tag": "Pricing",
-      "source": "https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-21-2026/",
-      "summary": "Siteimprove launched as a partner on AWS's agent marketplace. Other AI agents can pay per request to use its Accessibility Agent. The price per request wasn't shared.",
-      "takeaway": "Pay-per-request is usage-based pricing. Learn the difference between seat, usage and outcome pricing; it comes up in every PMM interview."
-    },
-    {
-      "headline": "Fast Simon ships an MCP server for developers",
+      "headline": "Microsoft lets AI agents join your company like an employee",
       "date": "Nov 19",
       "tag": "Product launch",
-      "source": "https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-21-2026/",
-      "summary": "Fast Simon, a product discovery platform, released an MCP server that works in AI coding tools like Claude Code and Cursor. Merchants can ask it questions about top searches and widget performance.",
-      "takeaway": "MCP is how tools plug into AI assistants. Launching \"where the user already works\" is a classic distribution play."
+      "source": "https://aiagentstore.ai/ai-agent-news/this-week",
+      "summary": "With Microsoft Foundry, companies can set agents up as named Microsoft 365 members with their own identity, email, calendar and OneDrive, plus a human manager who is accountable for them. Microsoft also added governance tools for managing whole fleets of agents.",
+      "takeaway": "\"Every agent has a manager\" is a trust message aimed at IT and security buyers. Selling AI to enterprises is often about control, not cleverness."
     },
     {
-      "headline": "Mirendil and Mercor raise giant AI rounds",
-      "date": "Earlier this month",
-      "tag": "Funding",
-      "source": "https://theartofcto.com/industry-outlook/2026-w47-saas-industry-outlook",
-      "summary": "Mirendil raised a $1 billion Series A and Mercor raised $750 million, among the largest rounds of the week, both in AI infrastructure and agentic AI.",
-      "takeaway": "Big rounds mean those companies will hire and spend on go-to-market soon. Funding news doubles as a job-search lead list."
-    },
-    {
-      "headline": "Clinch adds ByteDance's image and video models for advertisers",
+      "headline": "LangChain opens a gateway to keep agent tool use in check",
       "date": "Nov 19",
       "tag": "Product launch",
-      "source": "https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-21-2026/",
-      "summary": "Clinch, an ad platform, added ByteDance's Seedream and Seedance models alongside OpenAI and Google. Clients can control which models their teams use and how content is approved.",
-      "takeaway": "Enterprise buyers care about governance as much as features. \"Control who can use what\" is a selling point, not a footnote."
+      "source": "https://aiagentstore.ai/ai-agent-news/this-week",
+      "summary": "LangChain's LangSmith Tool Gateway is in public beta. It puts credentials, access rules, approvals and audit trails for agent tool calls in one place, and comes with hosted connectors for Google, Microsoft, Salesforce and GitHub.",
+      "takeaway": "Developer tools win enterprises by adding the boring stuff: permissions, approvals and audit logs. That's what moves a deal from pilot to purchase."
+    },
+    {
+      "headline": "Databricks' new agent fixes broken data pipelines for you",
+      "date": "Nov 19",
+      "tag": "Product launch",
+      "source": "https://aiagentstore.ai/ai-agent-news/this-week",
+      "summary": "Databricks announced Genie ZeroOps in public beta. The agent figures out why a data pipeline failed and proposes a fix as a pull request, but a human still has to approve changes to production.",
+      "takeaway": "Notice the \"human approves\" line. Positioning AI as a helper with a safety catch calms the buyers who would otherwise block it."
+    },
+    {
+      "headline": "OpenAI quietly tests always-on agents in ChatGPT",
+      "date": "Nov 21",
+      "tag": "AI products",
+      "source": "https://aiagentstore.ai/ai-agent-news/this-week",
+      "summary": "OpenAI is testing \"Dots,\" agents that keep running in the background, with a small group of ChatGPT Plus users, and rolling it out to eligible Business Standard workspaces.",
+      "takeaway": "Testing with a small group first is a go-to-market move too. You learn what message lands before the big launch."
+    },
+    {
+      "headline": "UL Solutions is buying sustainability platform Worldly",
+      "date": "This week",
+      "tag": "Acquisition",
+      "source": "https://nonbindingthoughts.substack.com/p/please-advise-deal-sheet-nov-20-2026",
+      "summary": "UL Solutions, known for safety testing and certification, agreed to buy Worldly at an enterprise value of about $350 million. Worldly provides sustainability data software.",
+      "takeaway": "A testing company buying a data platform is a bet that software can sell alongside services. Pairing the two gives buyers one vendor instead of two."
+    },
+    {
+      "headline": "SAP closes its TechWolf deal to sharpen skills data",
+      "date": "This week",
+      "tag": "Acquisition",
+      "source": "https://nonbindingthoughts.substack.com/p/please-advise-deal-sheet-nov-20-2026",
+      "summary": "SAP completed its purchase of TechWolf for an undisclosed price. TechWolf's \"context graph\" will help ground the skills data inside SAP SuccessFactors and its Joule AI assistant.",
+      "takeaway": "AI assistants are only as good as the data behind them. More and more vendors market their data foundation, not just the chatbot on top."
     }
   ],
   "sources": [
-    {
-      "name": "The Agile Brand Guide (Nov 21)",
-      "url": "https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-21-2026/"
-    },
-    {
-      "name": "The Art of CTO SaaS outlook (Nov 16)",
-      "url": "https://theartofcto.com/industry-outlook/2026-w47-saas-industry-outlook"
-    }
+    { "name": "Please Advise: Deal Sheet (Nov 20)", "url": "https://nonbindingthoughts.substack.com/p/please-advise-deal-sheet-nov-20-2026" },
+    { "name": "AI Agent Store: this week's agent news (Nov 23)", "url": "https://aiagentstore.ai/ai-agent-news/this-week" },
+    { "name": "The Agile Brand Guide: Levenza launch (Nov 23)", "url": "https://agilebrandguide.com/levenza-launches-personal-ai-agents-globally-for-the-enterprise" }
   ]
 }
