@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tea Over Coffee</title>
 <meta name="description" content="A daily five-minute digest of B2B tech news with product marketing takeaways.">
-<meta name="theme-color" content="#A53F2B">
+<meta name="theme-color" content="#1C0F13">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Tea Over Coffee">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/icon-192.png">
@@ -18,28 +18,19 @@
 <style>
 /* Layout: one narrow reading column, like a morning note. Quote first, then four stories you can swap. */
 :root {
-  /* Palette: Dry Sage, Frosted Mint, Reddish Brown, Dark Walnut, Rich Mahogany */
-  --bg: #F0FFCE;
-  --surface: #FAFFEA;
-  --ink: #280004;
-  --muted: #6B4A36;
-  --line: #CCC9A1;
-  --matcha: #A53F2B;
-  --matcha-soft: #E6E4C5;
-  --sage: #CCC9A1;
-  --chai: #4C230A;
+  /* Palette: Coffee Bean, Oxidized Iron, Azure Mist, Electric Sapphire, Slate Grey. Always dark. */
+  --bg: #1C0F13;
+  --surface: #28181D;
+  --ink: #F2FDFF;
+  --muted: #9EAEC4;
+  --line: #3C2A30;
+  --matcha: #E5775B;
+  --matcha-soft: #2C2D58;
+  --sage: #2C2D58;
+  --chai: #9BA2FF;
+  color-scheme: dark;
   --display: "Inter", system-ui, -apple-system, sans-serif;
   --body: "Inter", system-ui, -apple-system, sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #280004; --surface: #360E0A; --ink: #F0FFCE; --muted: #CCC9A1;
-    --line: #4C230A; --matcha: #E2826B; --matcha-soft: #4C230A; --sage: #4C230A; --chai: #CCC9A1; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #280004; --surface: #360E0A; --ink: #F0FFCE; --muted: #CCC9A1;
-  --line: #4C230A; --matcha: #E2826B; --matcha-soft: #4C230A; --sage: #4C230A; --chai: #CCC9A1; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); background: var(--bg); }
