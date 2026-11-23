@@ -73,6 +73,15 @@ button:disabled { opacity: .45; cursor: default; }
 .term p { margin: 0; color: var(--muted); font-size: 15px; }
 footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
 @media (prefers-reduced-motion: reduce) { .story { transition: none; } }
+.logo { width: 44px; height: auto; color: var(--matcha); margin: 14px 0 6px -2px; display: block; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.share { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px 6px 10px; }
+.share svg { width: 16px; height: 16px; }
+.tip { display: flex; gap: 12px; align-items: center; justify-content: space-between; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; margin-top: -12px; }
+.tip p { margin: 0; font-size: 14px; color: var(--muted); min-width: 0; }
+.tip strong { color: var(--ink); font-weight: 600; }
+.nowrap { white-space: nowrap; }
+.tip button { flex-shrink: 0; }
 .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
 .tabs a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 99px; border: 1px solid var(--line); }
 .tabs a[aria-current="page"] { color: var(--ink); background: var(--sage); border-color: var(--sage); }
@@ -116,10 +125,17 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
 <body>
 <div class="wrap">
   <header>
-    <div class="date" id="date"></div>
+    <div class="top"><div class="date" id="date"></div>
+      <button type="button" class="share" id="share" aria-label="Share Tea Over Coffee"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M5 12v7.5h14V12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Share</button></div>
+    <svg class="logo" viewBox="14 14 72 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 73 H37 C31 68 29 58 29 44 H67 C79 43 80 58 65 60 C64 66 62 70 59 73 H82"/><path d="M45 36 C42 32 49 29 46 24"/></g></svg>
     <h1>Tea <span>over</span> Coffee</h1>
     <p class="tag">Spilling the B2B tech tea, one cup a day.</p>
   </header>
+
+  <div class="tip" id="tip" hidden>
+    <p><strong>Make it an app.</strong> In Safari, tap <span class="nowrap">Share</span>, then <span class="nowrap">"Add to Home Screen."</span> Your daily cup will be one tap away.</p>
+    <button type="button" id="tipClose" aria-label="Dismiss tip">Got it</button>
+  </div>
 
   <nav class="tabs" aria-label="Sections">
     <a href="#today" data-tab="today">Today</a>
@@ -294,6 +310,19 @@ document.addEventListener("click", e => {
 });
 
 document.addEventListener("keydown", e => { if (e.key === "Escape" && $("confirmBox")) $("confirmBox").innerHTML = ""; });
+// Share and first-visit install tip.
+const SITE = "https://jennachailatte.github.io/tea-over-coffee/";
+$("share").addEventListener("click", async () => {
+  const data = { title: "Tea Over Coffee", text: "A daily cup of B2B tech news with product marketing takeaways.", url: SITE };
+  if (navigator.share) { try { await navigator.share(data); } catch {} return; }
+  try { await navigator.clipboard.writeText(SITE); toast("Link copied. Pass the tea!"); }
+  catch { toast(SITE); }
+});
+const installed = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+let tipSeen = false; try { tipSeen = localStorage.getItem("tea-tip") === "1"; } catch {}
+if (!installed && !tipSeen) $("tip").hidden = false;
+$("tipClose").addEventListener("click", () => { $("tip").hidden = true; try { localStorage.setItem("tea-tip", "1"); } catch {} });
+
 window.addEventListener("hashchange", () => { route(); window.scrollTo(0, 0); });
 (async () => {
   try { days = await getJSON("editions/index.json"); } catch { days = []; }
