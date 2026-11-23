@@ -172,7 +172,6 @@ function storyCard(ed, i, slot, opts = {}) {
   const s = ed.stories[i];
   const id = ed.date + "#" + i;
   const isSaved = saved.some(x => x.id === id);
-  const canPour = !opts.noPour && ed.stories.length > 4;
   return `<article class="story" id="slot${slot}">
     <button type="button" class="save" data-save="${esc(id)}" aria-pressed="${isSaved}" aria-label="${isSaved ? "Remove from saved" : "Save for later"}" title="${isSaved ? "Saved" : "Save for later"}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 3.5h12v17l-6-4.2-6 4.2z"/></svg></button>
     <div class="meta"><span class="kind">${esc(s.tag)}</span><span>${esc(s.date)}</span></div>
@@ -180,7 +179,7 @@ function storyCard(ed, i, slot, opts = {}) {
     <p>${esc(s.summary)}</p>
     <p class="pmm"><b>Takeaway</b> ${esc(s.takeaway)}</p>
     <div class="foot"><a href="${esc(s.source)}" target="_blank" rel="noopener">Source</a>
-      ${canPour ? `<button type="button" class="swap" data-slot="${slot}">Swap this one</button>` : ""}</div>
+</div>
   </article>`;
 }
 
