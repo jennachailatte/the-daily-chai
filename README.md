@@ -1,4 +1,4 @@
-# Tea Over Coffee
+# The Daily Chai
 
 A daily five-minute digest of B2B tech news, written for someone learning B2B product marketing. Each story has a plain-English summary and a takeaway, plus a quote of the day from a founder, CEO or investor.
 

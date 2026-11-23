@@ -1,6 +1,6 @@
 {
-  "name": "Tea Over Coffee",
-  "short_name": "Tea",
+  "name": "The Daily Chai",
+  "short_name": "Daily Chai",
   "description": "A daily five-minute digest of B2B tech news with product marketing takeaways.",
   "start_url": "./",
   "scope": "./",
