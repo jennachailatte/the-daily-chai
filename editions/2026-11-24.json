@@ -1,0 +1,102 @@
+{
+  "date": "2026-11-24",
+  "quote": {
+    "text": "Price is what you pay; value is what you get.",
+    "who": "Warren Buffett, CEO of Berkshire Hathaway (2008 shareholder letter)"
+  },
+  "term": {
+    "name": "All-stock deal",
+    "def": "An acquisition paid for with the buyer's own shares instead of cash. The seller's owners become part-owners of the buyer, and the buyer's existing shareholders own a smaller slice (that's \"dilution\")."
+  },
+  "stories": [
+    {
+      "headline": "CrowdStrike is buying Zscaler in a roughly $44 billion all-stock deal",
+      "date": "Nov 23",
+      "tag": "Acquisition",
+      "source": "https://nexusresearchreports.substack.com/p/nexus-technology-morning-note-ea3",
+      "summary": "Two of the biggest names in cybersecurity are merging: CrowdStrike agreed to buy Zscaler with stock, and moved its own earnings report up to Monday to announce it. Investors were split. CrowdStrike shares fell almost 9% on dilution worries even though its quarter beat estimates, while Zscaler jumped nearly 18%.",
+      "takeaway": "Security buyers are tired of juggling a dozen vendors, so \"one platform\" is the pitch. Expect the combined company's messaging to lean hard on consolidation and fewer tools."
+    },
+    {
+      "headline": "Sierra raises $1.75 billion at a $30 billion valuation for customer service AI agents",
+      "date": "Nov 23",
+      "tag": "Funding",
+      "source": "https://techbooky.com/sierra-raises-1-75bn-at-30bn-valuation-as-enterprise-ai-agents-boom",
+      "summary": "Bret Taylor and Clay Bavor's startup, which builds AI agents that handle customer conversations, raised a Series F led by Greenoaks and Lightspeed. It sells to banks, insurers, healthcare, retail and telecom companies, and one news brief reports its annual recurring revenue has passed $400 million.",
+      "takeaway": "Sierra sells a clear outcome (customer conversations handled) to specific industries. Naming the job and the buyer beats a vague \"AI for everything\" story."
+    },
+    {
+      "headline": "LangChain raises $300 million at a $3 billion valuation",
+      "date": "Last week",
+      "tag": "Funding",
+      "source": "https://parsers.substack.com/p/weekly-funding-rounds-statistics-14c",
+      "summary": "LangChain, which makes developer tools for building enterprise AI agents, closed a $300 million Series C with backers including Sequoia, Benchmark, IVP, CapitalG and Salesforce. It was one of 65 rounds last week that together raised $11.5 billion, up from $3.73 billion the week before.",
+      "takeaway": "When a customer like Salesforce also invests, it doubles as a reference. Strategic investors are a quiet form of social proof."
+    },
+    {
+      "headline": "Zoom declares its first-ever dividend after beating estimates",
+      "date": "Nov 23",
+      "tag": "Earnings",
+      "source": "https://nexusresearchreports.substack.com/p/nexus-technology-morning-note-ea3",
+      "summary": "Zoom beat expectations, raised its full-year profit outlook and announced its first quarterly dividend. HPE also beat, guided well above forecasts and added $5 billion to its stock buyback.",
+      "takeaway": "A first dividend signals \"we're a steady, mature business now.\" That shift changes the brand story from hypergrowth to reliability."
+    },
+    {
+      "headline": "AWS says its small decision models cut ticket labeling costs by 98%",
+      "date": "Nov 23",
+      "tag": "AI products",
+      "source": "https://siliconangle.com/2026/11/23/aws-is-making-ai-agents-more-decisive-and-secure-with-its-latest-strands-updates",
+      "summary": "AWS released Strands Decider v2, five free, open-weight models built for quick decisions inside AI agents. On its biggest internal ticketing system, AWS says swapping in these models cut labeling costs 98% and ticket response times 78%.",
+      "takeaway": "\"We use it ourselves\" plus a hard before-and-after number is one of the strongest proof points in B2B. Customer zero is still a customer story."
+    },
+    {
+      "headline": "Cisco and OpenAI launch an open-source shield for Linux systems",
+      "date": "Nov 23",
+      "tag": "Partnership",
+      "source": "https://nexusresearchreports.substack.com/p/nexus-technology-morning-note-ea3",
+      "summary": "The two companies launched Shirudo, an open-source security project that protects running Linux systems without a reboot while a permanent patch is rolled out, using AI agents to apply the defenses. Cisco's stock rose almost 7% on the day.",
+      "takeaway": "Open source is a go-to-market move: give the tool away, win developer trust, and sell the enterprise support and products around it."
+    },
+    {
+      "headline": "Workday closes its C1.ai deal to govern both people and AI agents",
+      "date": "Nov 23",
+      "tag": "Acquisition",
+      "source": "https://aiagentsdirectory.com/news/ai-agents-news-brief-november-23-2026",
+      "summary": "Workday completed its purchase of C1.ai, adding identity governance that manages access for employees and AI agents alike. Workday also reports quarterly earnings after the market closes today, with eyes on its AI revenue.",
+      "takeaway": "Treating agents like workers who need access rules is becoming a standard enterprise message. It speaks to the IT and security people who sign off on deals."
+    },
+    {
+      "headline": "Elastic is buying HoneyHive to watch over AI agents",
+      "date": "Nov 23",
+      "tag": "Acquisition",
+      "source": "https://aiagentsdirectory.com/news/ai-agents-news-brief-november-23-2026",
+      "summary": "Search and observability company Elastic agreed to acquire HoneyHive, a startup that traces and evaluates what AI agents are doing. Terms weren't disclosed.",
+      "takeaway": "Every new tech wave creates a \"how do we monitor it?\" market. Incumbents extend their category into the new thing instead of starting from scratch."
+    },
+    {
+      "headline": "Verra raises $5 million to give consulting firms an AI memory",
+      "date": "Nov 24",
+      "tag": "Funding",
+      "source": "https://thenextweb.com/news/verra-5m-seed-institutional-memory-consulting-firms",
+      "summary": "New York startup Verra calls itself the \"institutional memory layer\" for consulting firms: it learns from a firm's past work and helps produce client deliverables in Word, Excel and PowerPoint. Berkeley Research Group rolled it out to 1,000 people within two months of a pilot.",
+      "takeaway": "Picking one vertical (consultants) and living inside tools they already use makes adoption easy. Niche first, expand later."
+    },
+    {
+      "headline": "Walmart lets Meta's AI assistant shop for you, just before Black Friday",
+      "date": "Nov 24",
+      "tag": "Partnership",
+      "source": "https://aiagentstore.ai/ai-agent-news/this-week",
+      "summary": "Walmart opened its Agent Gateway to Meta's Muse in an early, invite-only beta, so the assistant can search, fill a cart and check out on Walmart.com. The timing lines up with the holiday shopping rush.",
+      "takeaway": "When AI agents start doing the buying, brands have to market to the agent too. Clean product data becomes a marketing channel."
+    }
+  ],
+  "sources": [
+    { "name": "Nexus Technology Morning Note (Nov 24)", "url": "https://nexusresearchreports.substack.com/p/nexus-technology-morning-note-ea3" },
+    { "name": "TechBooky: Sierra raises $1.75bn (Nov 24)", "url": "https://techbooky.com/sierra-raises-1-75bn-at-30bn-valuation-as-enterprise-ai-agents-boom" },
+    { "name": "Parsers VC: weekly funding rounds (Nov 24)", "url": "https://parsers.substack.com/p/weekly-funding-rounds-statistics-14c" },
+    { "name": "SiliconANGLE: AWS Strands updates (Nov 23)", "url": "https://siliconangle.com/2026/11/23/aws-is-making-ai-agents-more-decisive-and-secure-with-its-latest-strands-updates" },
+    { "name": "AI Agents Directory: news brief (Nov 23)", "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-november-23-2026" },
+    { "name": "The Next Web: Verra seed round (Nov 24)", "url": "https://thenextweb.com/news/verra-5m-seed-institutional-memory-consulting-firms" },
+    { "name": "AI Agent Store: this week's agent news (Nov 24)", "url": "https://aiagentstore.ai/ai-agent-news/this-week" }
+  ]
+}
