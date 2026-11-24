@@ -180,6 +180,8 @@ const KEY = "tea-saved";
 function loadSaved() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch { return []; } }
 function storeSaved(list) { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch {} }
 let saved = loadSaved();
+// Ask the browser to keep saved stories instead of clearing them to free space.
+try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch {}
 
 let days = [];
 const cache = {};
