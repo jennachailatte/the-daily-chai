@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
 <style>
-/* Layout: one narrow reading column with a tab bar: Today, Past cups, Saved. */
+/* Layout: one narrow reading column with a tab bar: Today, Past cups. */
 :root {
   /* Palette: dark brown and cream, with dark cherry as the one accent (used as fills, so it stays readable). Always dark. */
   --bg: #1F1510;          /* dark brown */
@@ -104,12 +104,6 @@ html, body { overscroll-behavior-y: contain; }
 #view { display: flex; flex-direction: column; gap: 36px; }
 .head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; min-height: 32px; }
 .story { position: relative; }
-.story .meta { padding-right: 40px; }
-.save { position: absolute; top: 12px; right: 12px; width: 40px; height: 40px; border: 0; border-radius: 99px; padding: 0; display: grid; place-items: center; color: var(--muted); }
-.save:hover { color: var(--ink); }
-.save[aria-pressed="true"] { color: var(--chai); }
-.save svg { width: 20px; height: 20px; }
-.save[aria-pressed="true"] path { fill: currentColor; }
 .refill { background: var(--matcha); border-color: var(--matcha); color: var(--ink); }
 .refill:hover { opacity: .9; }
 .overlay { position: fixed; inset: 0; z-index: 20; background: rgba(10, 4, 6, .72); display: grid; place-items: center; padding: 24px max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px)); animation: fadein .18s ease-out; }
@@ -149,7 +143,6 @@ html, body { overscroll-behavior-y: contain; }
   <nav class="tabs" aria-label="Sections">
     <a href="#today" data-tab="today">Today</a>
     <a href="#past" data-tab="past">Past cups</a>
-    <a href="#saved" data-tab="saved">Saved <span id="savedCount"></span></a>
   </nav>
 
   <main id="view" aria-live="polite"></main>
@@ -175,13 +168,6 @@ const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "
 const fmt = (d, opts) => new Date(d + "T12:00:00").toLocaleDateString("en-US", opts);
 const longDate = d => fmt(d, { weekday: "long", month: "long", day: "numeric", year: "numeric" });
 
-// Saved stories live on this phone only.
-const KEY = "tea-saved";
-function loadSaved() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch { return []; } }
-function storeSaved(list) { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch {} }
-let saved = loadSaved();
-// Ask the browser to keep saved stories instead of clearing them to free space.
-try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch {}
 
 let days = [];
 const cache = {};
@@ -218,10 +204,7 @@ function redrawTea() { $("tea").innerHTML = teaSection(current); }
 
 function storyCard(ed, i, slot, opts = {}) {
   const s = ed.stories[i];
-  const id = ed.date + "#" + i;
-  const isSaved = saved.some(x => x.id === id);
   return `<article class="story" id="slot${slot}">
-    <button type="button" class="save" data-save="${esc(id)}" aria-pressed="${isSaved}" aria-label="${isSaved ? "Remove from saved" : "Save for later"}" title="${isSaved ? "Saved" : "Save for later"}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 3.5h12v17l-6-4.2-6 4.2z"/></svg></button>
     <div class="meta"><span class="kind">${esc(s.tag)}</span><span>${esc(s.date)}</span></div>
     <h3>${esc(s.headline)}</h3>
     <p>${esc(s.summary)}</p>
@@ -263,29 +246,13 @@ function renderPast() {
   $("foot").textContent = "";
 }
 
-function renderSaved() {
-  current = null;
-  $("date").textContent = "Your reading list";
-  $("view").innerHTML = `<section class="section"><h2>Saved</h2>${
-    saved.length ? `<div class="stories">${saved.slice().reverse().map(x => {
-      const ed = { date: x.id.split("#")[0], stories: { [x.i]: x.story } };
-      return storyCard(ed, x.i, "s" + x.i, { noPour: true }).replace('<div class="meta">', `<div class="meta"><span>${fmt(ed.date, { month: "short", day: "numeric" })} cup ·</span>`);
-    }).join("")}</div>`
-    : `<p class="empty">Nothing saved yet. Tap "Save for later" on any story and it will wait for you here.</p>`
-  }</section>`;
-  $("foot").textContent = "Saved stories stay on this phone.";
-}
-
-function updateCount() { $("savedCount").textContent = saved.length ? "(" + saved.length + ")" : ""; }
 
 async function route() {
   const h = location.hash.slice(1) || "today";
-  const tab = h === "past" || h.startsWith("d-") ? "past" : h === "saved" ? "saved" : "today";
+  const tab = h === "past" || h.startsWith("d-") ? "past" : "today";
   document.querySelectorAll(".tabs a").forEach(a => a.dataset.tab === tab ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
-  updateCount();
   try {
     if (h === "past") return renderPast();
-    if (h === "saved") return renderSaved();
     if (h.startsWith("d-") && days.includes(h.slice(2))) return renderEdition(await edition(h.slice(2)), h.slice(2) === days[0], true);
     renderEdition(await edition(days[0]), true);
   } catch (e) {
@@ -342,23 +309,6 @@ function pourCup(label, midway, ready = Promise.resolve(), flavor = "") {
 })();
 
 document.addEventListener("click", e => {
-  const sv = e.target.closest("button[data-save]");
-  if (sv) {
-    const id = sv.dataset.save;
-    const at = saved.findIndex(x => x.id === id);
-    if (at >= 0) saved.splice(at, 1);
-    else {
-      const [d, i] = id.split("#");
-      const story = cache[d]?.stories[+i];
-      if (story) saved.push({ id, i: +i, story });
-    }
-    storeSaved(saved); updateCount();
-    const on = saved.some(x => x.id === id);
-    toast(on ? "Saved for later" : "Removed from saved");
-    if (location.hash === "#saved") return renderSaved();
-    sv.setAttribute("aria-pressed", on); sv.setAttribute("aria-label", on ? "Remove from saved" : "Save for later"); sv.title = on ? "Saved" : "Save for later";
-    return;
-  }
   if (e.target.closest("#refill")) { openConfirm(); return; }
   if (e.target.closest("#keep") || e.target.id === "overlay") { $("confirmBox").innerHTML = ""; return; }
   if (e.target.closest("#doRefill")) {
