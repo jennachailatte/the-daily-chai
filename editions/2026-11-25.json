@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-25",
+  "quote": {
+    "text": "You've got to start with the customer experience and work backwards to the technology.",
+    "who": "Steve Jobs, co-founder and CEO of Apple (WWDC 1997)"
+  },
+  "term": {
+    "name": "Guidance",
+    "def": "A company's own forecast for its next few months of revenue or profit. Investors often care more about guidance than the quarter that just ended, so a company can beat estimates and still see its stock drop."
+  },
+  "stories": [
+    {
+      "headline": "Workday beats on subscriptions, but its stock slides on guidance",
+      "date": "Nov 24",
+      "tag": "Earnings",
+      "source": "https://www.thecodew.com/2026/11/enterprise-software-watch-november-25.html",
+      "summary": "Workday's quarter brought in $2.705 billion in total revenue, with subscription revenue up 12.8% to $2.532 billion, while professional services shrank. Even so, shares fell about 7.9% after hours as investors focused on the outlook instead of the headline beat.",
+      "takeaway": "Recurring subscription revenue is the number SaaS investors watch, and the forward story matters as much as the past quarter. Your launch narrative should always answer \"what's next?\""
+    },
+    {
+      "headline": "Automation Anywhere closes its Boost.ai deal to add voice and chat AI",
+      "date": "Nov 24",
+      "tag": "Acquisition",
+      "source": "https://www.thecodew.com/2026/11/enterprise-software-watch-november-25.html",
+      "summary": "Automation Anywhere finished buying Boost.ai, a conversational and voice AI company working in more than 36 languages (terms weren't disclosed). A shared customer, Jack Henry, handles about 50,000 calls a month for nearly 100 financial institutions and saves over 4,000 hours monthly.",
+      "takeaway": "A shared customer with real volume and hours-saved numbers is the perfect proof point for an acquisition announcement. It shows the combo already works."
+    },
+    {
+      "headline": "Anthropic makes Claude Code Review generally available for GitHub",
+      "date": "Nov 25",
+      "tag": "AI products",
+      "source": "https://www.ai-news-brief.info/ai-news-brief-roundup-2026-11-25-overnight-gemini-4-neon-sierras-1-75b-round-and-nvidias-ceo-return/",
+      "summary": "Under its Claude Ship name for GitHub pull requests, Anthropic moved Code Review to general availability and opened PR Steward and Claude Approvals in public beta for Team and Enterprise customers. Separately, it updated MCP so servers can publish their own \"skills\" in beta.",
+      "takeaway": "Notice the ladder: beta for early adopters, GA for everyone, enterprise tiers for the newest features. Launch stages are a marketing tool, not just an engineering label."
+    },
+    {
+      "headline": "Dell posts a record quarter on AI server demand",
+      "date": "Nov 24",
+      "tag": "Earnings",
+      "source": "https://www.everhint.com/stock-market-news-november-24-2026-evening-update-last-12-hours-pacific-time/",
+      "summary": "Dell reported a record third quarter powered by AI servers and raised its full-year forecast for the third time this year. Shares climbed 4.2% after hours to $307.81.",
+      "takeaway": "The \"picks and shovels\" sellers are cashing in on the AI rush. Hardware may sound unglamorous, but it rides the hottest story in tech."
+    },
+    {
+      "headline": "Zipher raises a $45 million Series A to tame cloud data bills",
+      "date": "Nov 24",
+      "tag": "Funding",
+      "source": "https://techstartups.com/2026/11/25/startup-funding-news-today-november-25-2026-zipher-peak-energy-atomqubic-dante-security-more/",
+      "summary": "Zipher's software picks the right computing setup for big corporate data jobs across the three major public clouds. Maor Investments and Glilot Capital co-led the round, with TLV Partners coming back in.",
+      "takeaway": "\"We cut your cloud bill\" is an easy sell to a CFO. Cost savings messaging lands especially well when budgets are tight."
+    },
+    {
+      "headline": "AidenAI raises $32 million to help companies build agents on what they already run",
+      "date": "Nov 25",
+      "tag": "Funding",
+      "source": "https://aidailypost.com/news/ex-infosys-execs-ai-startup-raises",
+      "summary": "Founded in 2023 by former Infosys exec Srinivas Kamadi, AidenAI sits between a company's existing systems and AI models so teams can build and manage agents without ripping anything out. A91 Partners led the Series A.",
+      "takeaway": "\"No rip and replace\" removes the biggest fear an enterprise buyer has. Lower the switching cost and you shorten the sales cycle."
+    },
+    {
+      "headline": "Dante Security comes out of stealth to track AI agents at work",
+      "date": "Nov 24",
+      "tag": "Funding",
+      "source": "https://techstartups.com/2026/11/25/startup-funding-news-today-november-25-2026-zipher-peak-energy-atomqubic-dante-security-more/",
+      "summary": "Dante finds the AI agents running inside a company and ties each one's activity back to a responsible employee. It launched with a $10 million seed round led by NFX.",
+      "takeaway": "A brand-new category needs a simple problem statement. \"Who's responsible for this agent?\" is a question every security leader instantly gets."
+    },
+    {
+      "headline": "Google lets admins write plain-English rules for AI agents",
+      "date": "Nov 24",
+      "tag": "AI products",
+      "source": "https://aiagentstore.ai/ai-agent-news/this-week",
+      "summary": "Google previewed semantic governance policies in its Gemini platform, which check every tool an agent tries to use against rules written in everyday language. In Google's own case study, attack success on a security benchmark fell from 48.7% to 0.9%, with a small hit to normal task performance.",
+      "takeaway": "Being upfront about the trade-off (a little less speed for a lot more safety) builds trust with technical buyers. Honesty can be a differentiator."
+    },
+    {
+      "headline": "Meta's Muse agent launches in the UK with shopping and travel partners",
+      "date": "Nov 24",
+      "tag": "Partnership",
+      "source": "https://aiagentstore.ai/ai-agent-news/this-week",
+      "summary": "Meta brought its Muse personal agent to UK adults with connectors for Sainsbury's, Argos, M&S, easyJet and Trainline. Payments run through a Stripe-built Link wallet, and every purchase needs the user's approval.",
+      "takeaway": "Launching with big-name partners gives a new product instant credibility. Logos are borrowed trust."
+    },
+    {
+      "headline": "Intelligent Legal Solutions raises $11 million for private-fund paperwork",
+      "date": "Nov 24",
+      "tag": "Funding",
+      "source": "https://techstartups.com/2026/11/25/startup-funding-news-today-november-25-2026-zipher-peak-energy-atomqubic-dante-security-more/",
+      "summary": "London-based ILS makes ProVision, software that handles legal busywork like side letters for private investment funds, with optional AI features that a human reviews. Aquiline and BlackFin Capital Partners co-led the Series A, bringing total funding to $15 million.",
+      "takeaway": "\"AI with a human check\" is a smart message for cautious, regulated buyers like lawyers. Meet the customer where their comfort level is."
+    }
+  ],
+  "sources": [
+    { "name": "The CODEW: Enterprise Software Watch (Nov 25)", "url": "https://www.thecodew.com/2026/11/enterprise-software-watch-november-25.html" },
+    { "name": "Everhint: Stock market news evening update (Nov 24)", "url": "https://www.everhint.com/stock-market-news-november-24-2026-evening-update-last-12-hours-pacific-time/" },
+    { "name": "AI News Brief: overnight roundup (Nov 25)", "url": "https://www.ai-news-brief.info/ai-news-brief-roundup-2026-11-25-overnight-gemini-4-neon-sierras-1-75b-round-and-nvidias-ceo-return/" },
+    { "name": "AI Agent Store: this week's agent news (Nov 25)", "url": "https://aiagentstore.ai/ai-agent-news/this-week" },
+    { "name": "Tech Startups: funding news (Nov 25)", "url": "https://techstartups.com/2026/11/25/startup-funding-news-today-november-25-2026-zipher-peak-energy-atomqubic-dante-security-more/" },
+    { "name": "AI Daily Post: AidenAI raises $32M (Nov 25)", "url": "https://aidailypost.com/news/ex-infosys-execs-ai-startup-raises" }
+  ]
+}
