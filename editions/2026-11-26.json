@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-26",
+  "quote": {
+    "text": "Your most unhappy customers are your greatest source of learning.",
+    "who": "Bill Gates, co-founder of Microsoft (Business @ the Speed of Thought, 1999)"
+  },
+  "term": {
+    "name": "Annualized revenue (run rate)",
+    "def": "Take what a company earns in a recent month or quarter and multiply it out to a full year. It's a quick way to show how big a fast-growing company is right now, but it's a snapshot, not a promise."
+  },
+  "stories": [
+    {
+      "headline": "ElevenLabs is reportedly in talks to raise at a $33 billion valuation",
+      "date": "Nov 25",
+      "tag": "Funding",
+      "source": "https://techfundingnews.com/report-elevenlabs-in-early-talks-to-raise-at-33b-valuation-as-annualised-revenue-hits-700m",
+      "summary": "Bloomberg reports the voice AI company is in early talks to raise at $33 billion, up from $22 billion in September, with fundraising expected to start in Q1 2027. One unnamed source put annualized revenue at about $700 million, up $100 million since September. ElevenLabs declined to comment.",
+      "takeaway": "Voice AI sells to businesses as customer support agents, not as a cool demo. Tie a flashy technology to a boring, budgeted use case and the revenue follows."
+    },
+    {
+      "headline": "a16z is reportedly lining up about $20 billion for new funds",
+      "date": "Nov 25",
+      "tag": "Funding",
+      "source": "https://techfundingnews.com/a16z-talks-raise-20b-new-funds",
+      "summary": "Axios reports Andreessen Horowitz is in discussions to raise roughly $20 billion for its next funds, less than a year after closing more than $15 billion. The firm hasn't confirmed it. PitchBook data shows funds over $1 billion made up nearly 72% of US venture money raised through late June 2026.",
+      "takeaway": "Big money keeps pooling with a few big firms. For startups, a famous investor's name is part of the brand story, so it's worth featuring in launch messaging."
+    },
+    {
+      "headline": "Cloudflare launches Search for Agents with one toggle",
+      "date": "Nov 25",
+      "tag": "AI products",
+      "source": "https://aiagentstore.ai/ai-agent-news/daily/2026-11-26",
+      "summary": "A dashboard switch now indexes a website's content and gives AI agents a standard search endpoint that returns results in Markdown. It's in beta across Cloudflare's plans.",
+      "takeaway": "\"Make your site readable to AI agents\" is the new \"make your site mobile-friendly.\" Marketers should start thinking about how agents, not just people, find their content."
+    },
+    {
+      "headline": "Instantly launches PULSE-1, its own AI model for sales outreach",
+      "date": "Nov 25",
+      "tag": "AI products",
+      "source": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-25-2026/",
+      "summary": "The sales engagement company says PULSE-1 is trained on billions of go-to-market data points and can generate up to 2.2 times more positive replies. It's free to try until December 1.",
+      "takeaway": "A specific claim (\"up to 2.2x more positive replies\") plus a deadline on a free trial is a classic launch combo: proof plus urgency."
+    },
+    {
+      "headline": "SAP plugs a quantum computer into its software for the first time",
+      "date": "Nov 26",
+      "tag": "Partnership",
+      "source": "https://thequantuminsider.com/2026/11/26/sap-and-planqc-expand-quantum-computing-partnership-plan-hardware-tests-in-2027",
+      "summary": "SAP and planqc demoed a live connection between SAP and planqc's quantum system, using it to plan how to load a beverage delivery truck (on a quantum simulator for now). They plan to test real business scenarios on planqc hardware starting in 2027.",
+      "takeaway": "A truck-loading demo makes a mind-bending technology feel practical. Pick an everyday example your buyer already recognizes."
+    },
+    {
+      "headline": "Hacked uploads hit Microsoft's AI agent toolkit",
+      "date": "Nov 25",
+      "tag": "Security",
+      "source": "https://aiagentstore.ai/ai-agent-news/daily/2026-11-26",
+      "summary": "Microsoft says two releases of its Agent Framework Python package were uploaded to PyPI without authorization and contained code that steals credentials. It removed them, and developers are advised to stay on version 1.26.0.",
+      "takeaway": "Fast, clear security advisories protect trust. How a company communicates during an incident can matter as much as the fix itself."
+    },
+    {
+      "headline": "Every raises a $17.5 million Series A to bundle writing, software and AI training",
+      "date": "Nov 26",
+      "tag": "Funding",
+      "source": "https://technwz.com/startup-funding-news-lute-every/",
+      "summary": "IA Ventures led the round at a $110 million post-money valuation, with Betaworks joining. Nearly 10,000 people already pay for Every's writing, software and AI-at-work training, and it plans to roll them into one subscription.",
+      "takeaway": "Content can be a go-to-market engine: an audience that trusts your writing is warm leads for your product. Bundling turns readers into customers."
+    },
+    {
+      "headline": "XEBO.ai raises $10.5 million to make sense of customer feedback",
+      "date": "Nov 26",
+      "tag": "Funding",
+      "source": "https://technwz.com/startup-funding-news-lute-every/",
+      "summary": "The UAE company's AI analyzes customer and employee feedback for more than 350 organizations. Emirates Growth Fund put in the whole Series A, which will fund new products and a push into North America.",
+      "takeaway": "Voice-of-customer data is gold for marketers. Tools that turn messy feedback into clear themes help you write messaging in your customers' own words."
+    },
+    {
+      "headline": "Vegapay raises $10 million to power cards and credit lines for lenders",
+      "date": "Nov 26",
+      "tag": "Funding",
+      "source": "https://technwz.com/startup-funding-news-lute-every/",
+      "summary": "The Indian fintech software company runs card and UPI credit line programs for lenders such as YES BANK. Prosus and Vertex Ventures co-led the Series A.",
+      "takeaway": "Behind-the-scenes infrastructure sells by naming its big customers. One recognizable bank logo answers \"can we trust you?\""
+    },
+    {
+      "headline": "Avra raises $6 million for AI that spots credit and fraud risk",
+      "date": "Nov 26",
+      "tag": "Funding",
+      "source": "https://technwz.com/startup-funding-news-lute-every/",
+      "summary": "Brazil-based Avra builds an AI risk model for credit and fraud decisions. NXTP led the round, with Credit Saison among the backers, and Avra says its recurring revenue grew eightfold.",
+      "takeaway": "A growth multiple like \"8x recurring revenue\" is a punchy proof point. Simple numbers travel further than long explanations."
+    }
+  ],
+  "sources": [
+    { "name": "Tech Funding News: ElevenLabs in talks at $33B (Nov 26)", "url": "https://techfundingnews.com/report-elevenlabs-in-early-talks-to-raise-at-33b-valuation-as-annualised-revenue-hits-700m" },
+    { "name": "Tech Funding News: a16z in talks to raise $20B (Nov 26)", "url": "https://techfundingnews.com/a16z-talks-raise-20b-new-funds" },
+    { "name": "AI Agent Store: daily agent news (Nov 26)", "url": "https://aiagentstore.ai/ai-agent-news/daily/2026-11-26" },
+    { "name": "The Neuron: everything that happened in AI (Nov 25)", "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-25-2026/" },
+    { "name": "The Quantum Insider: SAP and planqc (Nov 26)", "url": "https://thequantuminsider.com/2026/11/26/sap-and-planqc-expand-quantum-computing-partnership-plan-hardware-tests-in-2027" },
+    { "name": "Technwz: startup funding news (Nov 26)", "url": "https://technwz.com/startup-funding-news-lute-every/" }
+  ]
+}
