@@ -1,0 +1,100 @@
+{
+  "date": "2026-11-27",
+  "quote": {
+    "text": "We see our customers as invited guests to a party, and we are the hosts. It's our job every day to make every important aspect of the customer experience a little bit better.",
+    "who": "Jeff Bezos, founder of Amazon"
+  },
+  "term": {
+    "name": "MCP (Model Context Protocol)",
+    "def": "A shared plug standard that lets AI agents connect to apps like Gmail or Drive in the same way every time. Think of it as USB-C for AI tools."
+  },
+  "stories": [
+    {
+      "headline": "Google tells AI agents to use the front door into Workspace",
+      "date": "Nov 26",
+      "tag": "Platform",
+      "source": "https://dailyai.report/archive/2026-11-26",
+      "summary": "Google made eight Workspace MCP servers generally available on November 24. Starting February 1, 2027, agent tools must reach Gmail, Drive, Calendar and other Workspace apps through those servers, and agents making direct API calls get throttled to Standard-tier limits no matter what plan the customer pays for.",
+      "takeaway": "Platforms set the rules of the road. If your product plugs into someone else's, a policy change can be bigger news for your customers than any feature you ship."
+    },
+    {
+      "headline": "Anthropic rewrites its API in Rust and cuts CPU use by about 70%",
+      "date": "Nov 26",
+      "tag": "AI products",
+      "source": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-26-2026/",
+      "summary": "Anthropic moved its Messages API from Python to Rust, cutting processor use per request by about 70% and the median wait for the first response token by about 20%. AI agents compared the old and new versions on live traffic, with humans reviewing the fixes.",
+      "takeaway": "\"Faster and cheaper to run\" is a quiet win most buyers never see, but two crisp numbers turn a behind-the-scenes engineering story into a credible headline."
+    },
+    {
+      "headline": "OpenAI pilots Private Inference for businesses with sensitive work",
+      "date": "Nov 26",
+      "tag": "AI products",
+      "source": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-26-2026/",
+      "summary": "Sam Altman announced a limited pilot with customers who want more privacy when they run AI on sensitive work. It's aimed at businesses, and it's a pilot, not a full launch yet.",
+      "takeaway": "In enterprise sales, privacy is often the thing blocking the deal. Launching with a small pilot lets you learn what big buyers really need before going wide."
+    },
+    {
+      "headline": "Nvidia halts some server shipments to Southeast Asia",
+      "date": "Nov 26",
+      "tag": "Policy",
+      "source": "https://dailyai.report/archive/2026-11-26",
+      "summary": "TechCrunch reports Nvidia told Dell and Supermicro to stop shipping servers to Malaysia, Singapore, Thailand and Indonesia. It's tied to US Commerce rules that require cloud providers to license access within 90 days and prove their end users aren't restricted.",
+      "takeaway": "Regulation can redraw your market map overnight. Knowing where you can sell (and why) is part of go-to-market, not just a legal footnote."
+    },
+    {
+      "headline": "nextesy raises $10.4 million to automate bookkeeping for small businesses",
+      "date": "Nov 27",
+      "tag": "Funding",
+      "source": "https://techfundingnews.com/swiss-ai-startup-nextesy-raises-10-4m-from-swisscom-ventures-to-automate-bookkeeping-for-smes/",
+      "summary": "The Zurich startup's AI handles receipts, invoices, accounting entries and financial reports for small businesses, freelancers and fiduciary firms. Swisscom Ventures led the seed round, and nextesy says it has more than 2,000 customers. The money goes to sales and marketing in Switzerland, AI agents, and expanding abroad in 2027.",
+      "takeaway": "Win your home market first, then expand. A tight local focus makes messaging sharper and customer stories easier to collect."
+    },
+    {
+      "headline": "Omneky launches an always-on AI agent for making ads",
+      "date": "Nov 25",
+      "tag": "Martech",
+      "source": "https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-26-2026/",
+      "summary": "Omneky says its new agent scored 8.8 out of 10 on ad quality versus 7.6 for the best competing tool, in its own test of 364 judged ads. More than $350 million in yearly ad spend runs through its systems, across Meta, Google, LinkedIn, TikTok and more.",
+      "takeaway": "Running your own benchmark is a bold claim. It grabs attention, but savvy buyers will ask how it was judged, so be ready to show your work."
+    },
+    {
+      "headline": "ChatGPT merges usage limits across Chat and Work",
+      "date": "Nov 25",
+      "tag": "Pricing",
+      "source": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-26-2026/",
+      "summary": "OpenAI is combining the usage allowances for ChatGPT's Chat and Work modes, so people who lean on both may hit their limit sooner. The Instant model stays available after the allowance runs out, and a wider rollout is planned for December.",
+      "takeaway": "Packaging changes can feel like a price hike even when the price doesn't move. Explain what stays free (here, Instant) right up front."
+    },
+    {
+      "headline": "DeepL's new speech translator cuts delay in half",
+      "date": "Nov 26",
+      "tag": "AI products",
+      "source": "https://dailyai.report/archive/2026-11-26",
+      "summary": "DeepL released Aure v2, a speech-to-speech translation model with half the median delay of the original. In its own tests, it made 32% fewer English-Japanese errors than Google's Gemini 3.5 Live Translate.",
+      "takeaway": "Naming a famous rival in your benchmark borrows their spotlight. It's a classic challenger-brand move."
+    },
+    {
+      "headline": "Matters.AI raises ₹115 crore to stop AI agents from leaking data",
+      "date": "Nov 27",
+      "tag": "Funding",
+      "source": "https://www.tice.news/tice-dispatch/startup-news-november-27-2026-dpiit-flipkart-healthkart-12845984",
+      "summary": "The Indian cybersecurity startup focuses on risks from sensitive data being exposed or misused by AI agents. Tanglin Venture Partners led the pre-Series A, with Kalaari Capital, Endiya Partners and IIFL Fintech Fund joining.",
+      "takeaway": "Every new technology creates a new worry, and every worry is a market. \"Security for AI agents\" is quickly becoming its own category."
+    },
+    {
+      "headline": "Cato Networks adds AgentSense to catch hijacked AI agents",
+      "date": "Nov 25",
+      "tag": "Security",
+      "source": "https://dailyai.report/archive/2026-11-26",
+      "summary": "AgentSense watches AI agents inside Cato's network security platform. It separates what a user actually asked from outside content the agent reads, and blocks steps that outside material tries to steer.",
+      "takeaway": "Adding a new feature to a platform customers already pay for is an easy upsell. \"You already have Cato, now it protects your agents too\" is a simple story."
+    }
+  ],
+  "sources": [
+    { "name": "Daily AI Report: AI news archive (Nov 26)", "url": "https://dailyai.report/archive/2026-11-26" },
+    { "name": "The Neuron: everything that happened in AI (Nov 26)", "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-26-2026/" },
+    { "name": "Tech Funding News: nextesy raises $10.4M (Nov 27)", "url": "https://techfundingnews.com/swiss-ai-startup-nextesy-raises-10-4m-from-swisscom-ventures-to-automate-bookkeeping-for-smes/" },
+    { "name": "The Agile Brand Guide: marketing tech and AI news (Nov 26)", "url": "https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-26-2026/" },
+    { "name": "TICE: startup dispatch (Nov 27)", "url": "https://www.tice.news/tice-dispatch/startup-news-november-27-2026-dpiit-flipkart-healthkart-12845984" }
+  ]
+}
