@@ -1,0 +1,102 @@
+{
+  "date": "2026-11-28",
+  "quote": {
+    "text": "Software is eating the world.",
+    "who": "Marc Andreessen, co-founder of Andreessen Horowitz (Wall Street Journal, 2011)"
+  },
+  "term": {
+    "name": "Conversion rate",
+    "def": "The share of visitors who actually do the thing you want, like buy, sign up or book a demo. If 100 people visit and 3 buy, that's a 3% conversion rate."
+  },
+  "stories": [
+    {
+      "headline": "AI shopping assistants are sending way more buyers to stores this Black Friday",
+      "date": "Nov 27",
+      "tag": "Commerce",
+      "source": "https://stocktwits.com/news-articles/markets/equity/adbe-stock-on-track-for-4-day-rally-adobe-reports-surge-in-ai-traffic-7-1-b-thanksgiving-sales/cNb6GnOR9Va",
+      "summary": "Adobe says US shoppers spent $7.1 billion online on Thanksgiving and forecasts $12.9 billion for Black Friday, up 9.2% from last year. It expects traffic from AI assistants to retail sites to rise 95% on Black Friday, and says those AI-referred shoppers convert at a 90% higher rate.",
+      "takeaway": "Buyers are starting to ask an AI before they visit your site, so making sure AI tools understand and recommend your product is becoming its own marketing job."
+    },
+    {
+      "headline": "OpenAI fixes a billing mistake, so heavy users hit limits faster",
+      "date": "Nov 26",
+      "tag": "Pricing",
+      "source": "https://samonai.substack.com/p/ai-brief-november-27-2026",
+      "summary": "OpenAI says a mistake at the GPT-6.2 launch on November 17 gave most users a discount on usage they shouldn't have had. After the fix, people reach their limits 40% faster on Astra and 25% faster on Sol. To soften it, Go, Plus, Pro and Business users get one extra usage reset, and Business users get free Fast Mode through the end of 2026.",
+      "takeaway": "When you take something away, pair the bad news with a make-good. A small gift up front keeps a fix from feeling like a price hike."
+    },
+    {
+      "headline": "Nutanix beats its own forecast and starts hunting for a new CEO",
+      "date": "Nov 27",
+      "tag": "Earnings",
+      "source": "https://www.storagenewsletter.com/2026/11/27/nutanix-fiscal-1q27-financial-results/",
+      "summary": "The cloud infrastructure company reported $772.4 million in quarterly revenue, up 15% from a year ago, and 15% growth in annual recurring revenue. CEO Rajiv Ramaswami said results beat all of its guided metrics. He'll step down once the board finds a successor and stay on as a senior advisor.",
+      "takeaway": "Announcing a leadership change alongside strong numbers is deliberate. Good news gives the market a calm frame for the bigger change."
+    },
+    {
+      "headline": "Marketers now spend about 15% of their budgets on AI, report says",
+      "date": "Nov 26",
+      "tag": "Marketing",
+      "source": "https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-27-2026/",
+      "summary": "A new Salesbox report on B2B content syndication cites Gartner's 2026 CMO Spend Survey: CMOs put an average of 15.3% of marketing budgets toward AI, while overall budgets stay flat at 7.8% of company revenue. Only 30% of marketing leaders report mature AI readiness, even though 70% call AI leadership a critical goal.",
+      "takeaway": "Flat budgets plus a bigger AI slice means something else got cut. If you sell to marketers, show what your product replaces, not just what it adds."
+    },
+    {
+      "headline": "Canada adds C$700 million to help businesses pay for AI computing",
+      "date": "Nov 27",
+      "tag": "Policy",
+      "source": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-27-2026/",
+      "summary": "Canada's AI Compute Access Fund now totals C$1 billion. The government will cover up to 80% of eligible computing costs for businesses that choose qualifying sovereign cloud providers.",
+      "takeaway": "Government subsidies can tip a buying decision. If you qualify for a program like this, \"80% covered\" belongs right in your sales pitch."
+    },
+    {
+      "headline": "AI agent visits to US retailers jump about 150-fold",
+      "date": "Nov 26",
+      "tag": "AI agents",
+      "source": "https://aiagentsdirectory.com/news/ai-agents-daily-brief-november-27-2026",
+      "summary": "Security firm Human Security estimates a 150-fold increase in AI agent traffic to US retailers this holiday season. Meta's Muse assistant made up nearly 70% of that AI-driven traffic.",
+      "takeaway": "Your next \"visitor\" might be a bot shopping for a human. Clear pricing and product facts on your site help agents pick you."
+    },
+    {
+      "headline": "Tencent Cloud and Tec-Do team up on AI for advertisers",
+      "date": "Nov 26",
+      "tag": "Partnership",
+      "source": "https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-27-2026/",
+      "summary": "Ad-tech company Tec-Do signed a strategic partnership with Tencent Cloud covering marketing AI models, computing power and Tencent's WorkBuddy agent ecosystem. Tec-Do says it works with about 7 million media publishers and more than 150 million creators.",
+      "takeaway": "Partnership announcements lean on big reach numbers. They signal scale fast, but the real proof comes later in customer results."
+    },
+    {
+      "headline": "Microsoft exposes an AI hacking toolkit used by state-backed groups",
+      "date": "Nov 25",
+      "tag": "Security",
+      "source": "https://samonai.substack.com/p/ai-brief-november-27-2026",
+      "summary": "Microsoft Threat Intelligence detailed ARTEX, a framework that hands parts of a cyberattack to specialized AI agents. One campaign it tracked logged more than 151,000 failed sign-in attempts, peaking at 2,900 a minute.",
+      "takeaway": "Threat research is marketing too. Publishing what you found builds trust and makes the case for your security products without a hard sell."
+    },
+    {
+      "headline": "Indian startup funding halves in a quiet week, led by Finnable",
+      "date": "Nov 28",
+      "tag": "Funding",
+      "source": "https://inc42.com/buzz/from-finnable-to-m-indian-startups-raised-about-147-mn-this-week/",
+      "summary": "Indian startups raised $146.7 million from November 23 to 27, down 49.3% from the week before, across 15 deals. Lending tech company Finnable led with a $43.8 million Series C, and AI startups together raised more than $64 million.",
+      "takeaway": "Holiday weeks are slow for deals. Timing matters for announcements, so big news usually waits for a week when people are paying attention."
+    },
+    {
+      "headline": "CredAble buys a majority stake in AI regulation startup Reql",
+      "date": "Nov 28",
+      "tag": "Acquisition",
+      "source": "https://inc42.com/buzz/from-finnable-to-m-indian-startups-raised-about-147-mn-this-week/",
+      "summary": "Fintech platform CredAble acquired a 70% stake in Reql, an AI-native startup that tracks regulatory rules. It's one of a couple of acquisitions in India's startup scene this week.",
+      "takeaway": "Buying a stake instead of the whole company is a lower-risk way to add a new capability, and it gives both brands room to keep their own identity."
+    }
+  ],
+  "sources": [
+    { "name": "Stocktwits: Adobe reports surge in AI traffic, $7.1B Thanksgiving sales (Nov 27)", "url": "https://stocktwits.com/news-articles/markets/equity/adbe-stock-on-track-for-4-day-rally-adobe-reports-surge-in-ai-traffic-7-1-b-thanksgiving-sales/cNb6GnOR9Va" },
+    { "name": "Sam on AI: AI Brief (Nov 27)", "url": "https://samonai.substack.com/p/ai-brief-november-27-2026" },
+    { "name": "StorageNewsletter: Nutanix fiscal 1Q27 results (Nov 27)", "url": "https://www.storagenewsletter.com/2026/11/27/nutanix-fiscal-1q27-financial-results/" },
+    { "name": "The Agile Brand Guide: marketing tech and AI news (Nov 27)", "url": "https://agilebrandguide.com/yesterdays-marketing-technology-ai-news-november-27-2026/" },
+    { "name": "The Neuron: everything that happened in AI (Nov 27)", "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-27-2026/" },
+    { "name": "AI Agents Directory: daily brief (Nov 27)", "url": "https://aiagentsdirectory.com/news/ai-agents-daily-brief-november-27-2026" },
+    { "name": "Inc42: Indian startups raised about $147 Mn this week (Nov 28)", "url": "https://inc42.com/buzz/from-finnable-to-m-indian-startups-raised-about-147-mn-this-week/" }
+  ]
+}
